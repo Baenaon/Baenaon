@@ -267,6 +267,7 @@
 > ![image](https://user-images.githubusercontent.com/95459089/190483437-be55ab3e-2373-4166-b7e7-15fa79055460.png)
 > 3. 앱 이름과 사업자명을 입력 후 저장
 > 4. 내 애플리케이션 > 앱 설정 > 요약 정보 클릭
+> 
 > ![image](https://user-images.githubusercontent.com/95459089/190483715-1e10646e-e0b8-47c7-9852-c3ba12f937c8.png)
 > 5. REST API 키 복사 후 저장
 > **4. my_settings.py파일 생성 후 자신의 시크릿 키(장고, 카카오 API), 데이터베이스 넣기**

@@ -264,15 +264,19 @@
 > **3. 카카오 API키 발급 받기**
 > 1. [카카오 developer 사이트](https://developers.kakao.com/) 접속
 > 2. 로그인 후, 내 애플리케이션 클릭
+> 
 > ![image](https://user-images.githubusercontent.com/95459089/190483437-be55ab3e-2373-4166-b7e7-15fa79055460.png)
+> 
 > 3. 앱 이름과 사업자명을 입력 후 저장
 > 4. 내 애플리케이션 > 앱 설정 > 요약 정보 클릭
 > 
 > ![image](https://user-images.githubusercontent.com/95459089/190483715-1e10646e-e0b8-47c7-9852-c3ba12f937c8.png)
+> 
 > 5. REST API 키 복사 후 저장
 > **4. my_settings.py파일 생성 후 자신의 시크릿 키(장고, 카카오 API), 데이터베이스 넣기**
 > 
 > ![image](https://user-images.githubusercontent.com/87630540/190362704-92f72db2-09aa-4552-b0f7-4ebf542a16f7.png)
+> 
 > **2-2-5에서 저장한 REST API키를 KAKAO_REST_API_KEY에 입력**
 > **SECRET_KEY는 자신만의 파이썬 SECRET_KEY 입력**
 > **my_setings 파일은 backend 폴더 안에 생성을 해야하며, my_settings에서 설정한 NAME과 같은 데이터베이스가 생성이 되어있어야 합니다.**

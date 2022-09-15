@@ -250,7 +250,10 @@
 >
 > ```bash
 > python -m venv venv
-> venv/Scripts/activate
+> cd venv/Scripts
+> activate
+> cd ..
+> cd ..
 > ```
 >
 > **2-2 requirements 라이브러리 설치**
@@ -267,6 +270,7 @@
 > ```bash
 >  python manage.py makemigrations 
 >  ```
+> **만약 각 app의 migrate 폴더 안에 __init__.py 파일을 제외한 파일이 존재한다면 makemigrations를 하기 전에 삭제하고 커멘드를 입력해주십시오.**
 >  ```bash
 >  python manage.py migrate
 > ```

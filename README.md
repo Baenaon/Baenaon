@@ -264,7 +264,7 @@
 > **3. 카카오 API키 발급 받기**
 > 1. [카카오 developer 사이트](https://developers.kakao.com/) 접속
 > 2. 로그인 후, 내 애플리케이션 클릭
-> <p align="center"><img style="margin:50px 0 10px 0" src="[https://upload.acmicpc.net/42c87203-247a-49d1-bc63-44397a7184db/-/preview/](https://user-images.githubusercontent.com/95459089/190483437-be55ab3e-2373-4166-b7e7-15fa79055460.png)" alt/></p> 
+> 
 > ![image](https://user-images.githubusercontent.com/95459089/190483437-be55ab3e-2373-4166-b7e7-15fa79055460.png)
 > 
 > 3. 앱 이름과 사업자명을 입력 후 저장

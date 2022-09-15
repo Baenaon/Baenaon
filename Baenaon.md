@@ -1,5 +1,5 @@
 ## Django-react 배달비 공유 웹 서비스 플랫폼 🔥
-![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/67817682/190422653-2ac54712-997a-4c5e-b815-4168c87366ae.gif)
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/67817682/190423845-b91b8fb0-585a-4ad1-bdc0-946c6a41e465.gif)
 <br>
 
 ## ***Introduction*** ✔

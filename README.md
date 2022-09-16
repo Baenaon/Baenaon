@@ -65,7 +65,7 @@
 
 ### ***Frontend Components***
 
-> 1️⃣  레이아읏 관련 Components
+> 1️⃣  레이아웃 관련 Components
 >
 >   | File Name | Directory              | 목적            |
 >   | --------- | ---------------------- | --------------- |

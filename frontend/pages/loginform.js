@@ -5,6 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginRequestAction } from "../reducers/user";
 import Router from "next/router";
 
+import { KAKAO_AUTH_URL } from "../pages/oauth";
+
+function kakao(locations){
+  const params = new URLSearchParams(location.search);
+  let code = params.get("code");
+  console.log(code);
+}
+
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { logInLoading, logInError, logInDone } = useSelector(
@@ -27,6 +35,7 @@ const LoginForm = () => {
 
   const onSubmitForm = useCallback(() => {
     console.log(email, password);
+    console.log(KAKAO_AUTH_URL);
     dispatch(loginRequestAction({ email, password }));
   }, [email, password]);
 
@@ -70,6 +79,11 @@ const LoginForm = () => {
         >
           로그인
         </button>
+
+          <a href={KAKAO_AUTH_URL}>
+              <img src="../../kakao_logo.png" class="center"/>
+          </a>
+          
 
         <a
           href="#"

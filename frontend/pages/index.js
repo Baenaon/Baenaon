@@ -5,6 +5,8 @@ import Hero from "./components/home/hero";
 import Animation from "./components/home/animation";
 import wrapper from "../store/configureStore";
 
+
+
 const Home = () => {
   return (
     <Layout>

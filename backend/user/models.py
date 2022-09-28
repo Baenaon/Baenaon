@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
-
+from django.utils.translation import gettext_lazy as _
 from post.models import Post
 
 
@@ -51,6 +51,16 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser,  PermissionsMixin):
+    LOGIN_EMAIL = "email"
+    LOGIN_NAVER = "naver"
+    LOGIN_KAKAO = "kakao"
+
+    LOGIN_CHOICES = (
+        (LOGIN_EMAIL, _("Email")),
+        (LOGIN_NAVER, _("Naver")),
+        (LOGIN_KAKAO, _("Kakao")),
+    )
+
     email = models.CharField(
         verbose_name='email',
         max_length=100,
@@ -67,6 +77,11 @@ class User(AbstractBaseUser,  PermissionsMixin):
         max_length=200,
         default=""
     )
+
+    login_method = models.CharField(
+        max_length=6, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
+    )
+
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
@@ -80,6 +95,3 @@ class User(AbstractBaseUser,  PermissionsMixin):
 
     class Meta:
         db_table = 'users'
-
-
-

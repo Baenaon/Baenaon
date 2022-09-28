@@ -9,7 +9,7 @@ db.sqlite3-journal
 media
 
 venv/
-.venv
+.myvenv
 .idea/
 
 my_settings.py

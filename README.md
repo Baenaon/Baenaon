@@ -65,7 +65,7 @@
 
 ### ***Frontend Components***
 
-> 1️⃣  레이아읏 관련 Components
+> 1️⃣  레이아웃 관련 Components
 >
 >   | File Name | Directory              | 목적            |
 >   | --------- | ---------------------- | --------------- |
@@ -250,7 +250,10 @@
 >
 > ```bash
 > python -m venv venv
-> venv/Scripts/activate
+> cd venv/Scripts
+> activate
+> cd ..
+> cd ..
 > ```
 >
 > **2-2 requirements 라이브러리 설치**
@@ -258,20 +261,42 @@
 > ```bash
 > pip install -r requirements.txt
 > ```
+> **3. 카카오 API키 발급 받기**
 >
-> **3. my_settings.py파일 생성 후 자신의 시크릿 키(장고, 카카오 API), 데이터베이스 넣기**
+> 3-1. [카카오 developer 사이트](https://developers.kakao.com/) 접속
+>
+> 3-2. 로그인 후, 내 애플리케이션 클릭
+> 
+> ![image](https://user-images.githubusercontent.com/95459089/190483437-be55ab3e-2373-4166-b7e7-15fa79055460.png)
+> 
+> 3-3. 앱 이름과 사업자명을 입력 후 저장
+>
+> 3-4. 내 애플리케이션 > 앱 설정 > 요약 정보 클릭
+> 
+> ![image](https://user-images.githubusercontent.com/95459089/190483715-1e10646e-e0b8-47c7-9852-c3ba12f937c8.png)
+> 
+> 3-5. REST API 키 복사 후 저장
+>
+> **4. my_settings.py파일 생성 후 자신의 시크릿 키(장고, 카카오 API), 데이터베이스 넣기**
 > 
 > ![image](https://user-images.githubusercontent.com/87630540/190362704-92f72db2-09aa-4552-b0f7-4ebf542a16f7.png)
 > 
-> **4. 데이터 베이스에 반영**
+> 4-1. 3-5에서 저장한 REST API키를 KAKAO_REST_API_KEY에 입력
+>
+> 4-2. SECRET_KEY는 자신만의 파이썬 SECRET_KEY 입력
+>
+> 4-3. my_setings 파일은 backend 폴더 안에 생성을 해야하며, my_settings에서 설정한 NAME과 같은 데이터베이스가 생성이 되어있어야 합니다.
+> 
+> **5. 데이터 베이스에 반영**
 > ```bash
 >  python manage.py makemigrations 
 >  ```
+> **만약 각 app의 migrate 폴더 안에 __init__.py 파일을 제외한 파일이 존재한다면 makemigrations를 하기 전에 삭제하고 커멘드를 입력해주십시오.**
 >  ```bash
 >  python manage.py migrate
 > ```
 > 
-> **5. 서버 실행**
+> **6. 서버 실행**
 >
 > ```bash
 > python manage.py runserver

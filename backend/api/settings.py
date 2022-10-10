@@ -179,10 +179,10 @@ SIMPLE_JWT = {
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
-    "43.201.95.83",
+    "3.36.170.120",
     # ...
 ]
 
-CORS_ORIGIN_WHITELIST = ('http://0.0.0.1:3000', 'http://localhost:3000', "http://43.201.95.83:3001", "http://43.201.95.83:3000")
+CORS_ORIGIN_WHITELIST = ('http://0.0.0.1:3000', 'http://localhost:3000', "http://3.36.170.120:3000")
 
 CORS_ALLOW_CREDENTIALS = True

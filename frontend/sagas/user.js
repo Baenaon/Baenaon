@@ -15,10 +15,11 @@ import {
   POST_CHECK_SUCCESS,
   POST_CHECK_FAILURE,
 } from "../reducers/user";
+import {backUrl} from "../config/config";
 
 function logInAPI(data) {
   console.log(data);
-  return axios.post("http://127.0.0.1:8000/api/user/signin/", data);
+  return axios.post(backUrl + "/api/user/signin/", data);
 }
 
 //login : 실질적으로 동기작업을 하는 generator함수로 api를 호출한 후 분기점을 나눠서 다음으로 실행할 action을 put함(put = dispatch)
@@ -61,7 +62,7 @@ function* logOut() {
 
 function signUpAPI(data) {
   console.log(data);
-  return axios.post("http://127.0.0.1:8000/api/user/signup/", data);
+  return axios.post(backUrl + "/api/user/signup/", data);
 }
 
 function* Signup(action) {
@@ -81,7 +82,7 @@ function* Signup(action) {
 }
 
 function PostCardAPI(data) {
-  return axios.get("http://127.0.0.1:8000/api/posts/user/", data);
+  return axios.get(backUrl + "/api/posts/user/", data);
 }
 
 function* PostCard(action) {

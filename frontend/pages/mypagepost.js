@@ -7,6 +7,7 @@ import Header from "../pages/components/header";
 
 import { useRouter } from "next/router";
 import Link from "next/link";
+import {backUrl} from "../config/config";
 
 const MyPosts = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const MyPosts = () => {
   useEffect(() => {
     set_access_token(window.localStorage.getItem("access_token"));
     axios
-      .get("http://127.0.0.1:8000/api/user/mypage/posts/",{
+      .get(backUrl + "/api/user/mypage/posts/",{
         headers: {
           Authorization: `Bearer ${access_token}`,
         },

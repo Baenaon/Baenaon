@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {backUrl} from "../../config/config";
 
 export default function Header() {
   const [islogin, setislogin] = useState(false)
@@ -12,7 +13,7 @@ export default function Header() {
     }
     
     else {
-    axios.post("http://127.0.0.1:8000/api/user/refresh/",{refresh:refresh})
+    axios.post(backUrl + "/api/user/refresh/",{refresh:refresh})
     .then(function(response){
       window.localStorage.setItem("access_token",response.data.access);
       console.log("acc",response);

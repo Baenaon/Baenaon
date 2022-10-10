@@ -24,13 +24,14 @@ import {
   LOAD_POSTCARDS_REQUEST,
   LOAD_POSTCARDS_SUCCESS,
 } from "../reducers/post";
+import {backUrl} from "../config/config";
 
 //게시글 올리기
 function addPostAPI(data) {
 
   const access = window.localStorage.getItem("access_token");
   
-  return axios.post("http://127.0.0.1:8000/api/posts/create/", data.send, {
+  return axios.post(backUrl + "/api/posts/create/", data.send, {
     headers: {
       Authorization: `Bearer ${access}`,
     },
@@ -81,7 +82,7 @@ function* addPost(action) {
 // 게시글들 불러오기
 
 function loadPostsAPI(data) {
-  return axios.get(`http://127.0.0.1:8000/api/map/${data}/posts`);
+  return axios.get(backUrl + `/api/map/${data}/posts`);
 }
 
 function* loadPosts(action) {
@@ -102,7 +103,7 @@ function* loadPosts(action) {
 }
 
 function removePostAPI(data) {
-  return axios.delete(`http://127.0.0.1:8000/api/posts/${data.id}`, {
+  return axios.delete(backUrl + `/api/posts/${data.id}`, {
     headers: {
       Authorization: `Bearer ${data.access_token}`,
     },
@@ -129,7 +130,7 @@ function* removePost(action) {
 function addCommentAPI(data) {
   const access = window.localStorage.getItem("access_token");
   return axios.post(
-    `http://127.0.0.1:8000/api/posts/${data.id}/comments/create/`,
+    backUrl + `/api/posts/${data.id}/comments/create/`,
     data.send,
     {
       headers: {
@@ -177,7 +178,7 @@ function* addComment(action) {
 // //게시글 하나 불러오기
 
 function loadPostAPI(data) {
-  return axios.get(`http://127.0.0.1:8000/api/posts/${data}/`);
+  return axios.get(backUrl + `/api/posts/${data}/`);
 }
 
 function* loadPost(action) {
@@ -198,7 +199,7 @@ function* loadPost(action) {
 }
 
 function loadPostCardsAPI(data) {
-  return axios.get(`http://127.0.0.1:8000/api/postcards/${data}/`);
+  return axios.get(backUrl + `/api/postcards/${data}/`);
 }
 
 function* loadPostCards(action) {

@@ -6,6 +6,7 @@ import { loginRequestAction } from "../reducers/user";
 import Router from "next/router";
 
 import { KAKAO_AUTH_URL } from "../pages/oauth";
+import {frontUrl} from "../config/config";
 
 function kakao(locations){
   const params = new URLSearchParams(location.search);
@@ -23,7 +24,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (logInDone) {
-      Router.push("http://localhost:3000");
+      Router.push(frontUrl);
     }
   }, [logInDone]);
 

@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../pages/components/header";
 import Router from "next/router";
+import {backUrl} from "../config/config";
 
 const userprofile = () => {
   const [user_profile, set_user_profile] = useState({});
   const [access_token, set_access_token] = useState({});
   function refreshToken(){
     const refresh = window.localStorage.getItem("refresh_token");
-    return axios.post("http://127.0.0.1:8000/api/user/refresh/", {
+    return axios.post(backUrl + "/api/user/refresh/", {
       refresh : refresh
     });
   }
@@ -17,7 +18,7 @@ const userprofile = () => {
   useEffect(() => {
     set_access_token(window.localStorage.getItem("access_token"));
     axios
-      .get("http://127.0.0.1:8000/api/user/mypage/",{
+      .get(backUrl + "/api/user/mypage/",{
         headers: {
           Authorization: `Bearer ${access_token}`,
         },

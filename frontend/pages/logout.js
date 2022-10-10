@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Router from "next/router";
+import {backUrl, frontUrl} from "../config/config";
 
 const Logout = () => {
 
@@ -11,18 +12,18 @@ const Logout = () => {
     console.log("access", access_token);
     console.log("refresh", refresh_token);
     axios
-      .post("http://127.0.0.1:8000/api/user/logout/", {refresh_token: refresh_token},{
+      .post(backUrl + "/api/user/logout/", {refresh_token: refresh_token},{
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
       })
       .then(function (response) {
-        Router.push("http://localhost:3000");
+        Router.push(frontUrl);
         window.localStorage.clear();
 
       })
       .catch(function (error) {
-        Router.push("http://localhost:3000");
+        Router.push(frontUrl);
         window.localStorage.clear();
         console.log(error);
       });

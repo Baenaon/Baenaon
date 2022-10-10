@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import Header from "../pages/components/header";
 import Comment from "../pages/comment";
+import {backUrl} from "../config/config";
 
 const MyComment = () => {
   const [access_token, set_access_token] = useState({});
@@ -11,7 +12,7 @@ const MyComment = () => {
   useEffect(() => {
     set_access_token(window.localStorage.getItem("access_token"));
     axios
-      .get("http://127.0.0.1:8000/api/user/mypage/comments/", {
+      .get(backUrl + "/api/user/mypage/comments/", {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },

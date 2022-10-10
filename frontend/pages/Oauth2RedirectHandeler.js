@@ -1,4 +1,5 @@
 import React from "react";
+import {backUrl} from "../config/config";
 
 const OAuth2RedirectHandler = (props) => {
 
@@ -6,7 +7,7 @@ const OAuth2RedirectHandler = (props) => {
     let code = new URL(window.location.href).searchParams.get("code");
   
     axios
-      .post("http://127.0.0.1:8000/api/user/login/kakao/callback/", {
+      .post(backUrl + "/api/user/login/kakao/callback/", {
         // credentials: "include",
         code: code,
       })

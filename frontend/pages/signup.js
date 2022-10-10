@@ -5,6 +5,7 @@ import { SIGN_UP_REQUEST } from "../reducers/user";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Router from "next/router";
+import {frontUrl} from "../config/config";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (signUpDone) {
-      Router.push("http://localhost:3000");
+      Router.push(frontUrl);
     }
   }, [signUpDone]);
 

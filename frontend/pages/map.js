@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LOAD_POSTS_REQUEST } from "../reducers/post";
 import { LOAD_ALLPOST_REQUEST } from "../reducers/post";
 import Header from "../pages/components/header";
+import {backUrl} from "../config/config";
 
 const Maps = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Maps = () => {
     set_access_token(window.localStorage.getItem("access_token"));
   
     axios
-      .get("http://127.0.0.1:8000/api/map/", {
+      .get(backUrl + "/api/map/", {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },

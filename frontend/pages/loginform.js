@@ -24,7 +24,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (logInDone) {
-      Router.push(frontUrl);
+      Router.push("/");
     }
   }, [logInDone]);
 

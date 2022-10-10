@@ -15,7 +15,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (signUpDone) {
-      Router.push(frontUrl);
+      Router.push("/");
     }
   }, [signUpDone]);
 

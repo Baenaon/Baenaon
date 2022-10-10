@@ -18,12 +18,12 @@ const Logout = () => {
         },
       })
       .then(function (response) {
-        Router.push(frontUrl);
+        Router.push("/");
         window.localStorage.clear();
 
       })
       .catch(function (error) {
-        Router.push(frontUrl);
+        Router.push("/");
         window.localStorage.clear();
         console.log(error);
       });

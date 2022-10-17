@@ -130,6 +130,8 @@
 >   | --- | --- | --- | --- | --- |
 >   |**POST** |/api/user/signup|CREATE| AllowAny |사용자 회원가입|
 >   |**POST** |/api/user/signin|NONE| AllowAny |사용자 로그인, access_token 생성 및 반환|
+>   |**API** |/api/user/login/kakao/|NONE| AllowAny |카카오 소셜 로그인, access_token 생성 및 반환|
+>   |**API** |/api/user/login/naver/|NONE| AllowAny |네이버 소셜 로그인, access_token 생성 및 반환|    
 > 
 > 
 > 2️⃣ 게시판 리소스 관련 API
@@ -142,6 +144,7 @@
 >   |**POST** |/api/posts/<int:pk>/comments/create|CREATE| Access_token | 해당 게시글에 댓글 생성|
 >   |**GET**, **PUT**, **DELETE**|/api/posts/<int:pk>/comments/|RETRIEVE, UPDATE, DESTORY| Access_token |댓글 확인, 수정, 삭제|
 >   |**GET**|/api/posts/search/category/|LIST|AllowAny|카테고리별 검색|
+>   |**GET**|/api/posts/|LIST| Access_token |사용자 반경 1km 이내의 이웃이 쓴 글 확인|
 >   
 > 3️⃣ 지도 API
 > 

@@ -15,7 +15,7 @@ import {
   POST_CHECK_SUCCESS,
   POST_CHECK_FAILURE,
 } from "../reducers/user";
-import {backUrl} from "../config/config";
+import { backUrl } from "../config/config";
 
 function logInAPI(data) {
   console.log(data);
@@ -29,7 +29,8 @@ function* logIn(action) {
 
     localStorage.setItem("access_token", result.data.access_token);
     localStorage.setItem("refresh_token", result.data.refresh_token);
-    
+    console.log(result.data);
+
     yield put({
       type: LOG_IN_SUCCESS,
       data: result.data,

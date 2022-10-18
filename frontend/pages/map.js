@@ -1,3 +1,4 @@
+import { backUrl } from "../config/config";
 import React, { useEffect, useState } from "react";
 import { MapMarker, Map } from "react-kakao-maps-sdk";
 import Link from "next/link";
@@ -6,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { LOAD_POSTS_REQUEST } from "../reducers/post";
 import { LOAD_ALLPOST_REQUEST } from "../reducers/post";
 import Header from "../pages/components/header";
-import {backUrl} from "../config/config";
 
 const Maps = () => {
   const dispatch = useDispatch();
@@ -14,14 +14,11 @@ const Maps = () => {
   const { allPost } = useSelector((state) => state.user);
   const [access_token, set_access_token] = useState({});
 
-  
-
   useEffect(() => {
-    
     set_access_token(window.localStorage.getItem("access_token"));
-  
+
     axios
-      .get(backUrl + "/api/map/", {
+      .get("http://127.0.0.1:8000/api/map/", {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
@@ -35,7 +32,6 @@ const Maps = () => {
   }, [access_token]);
 
   useEffect(() => {
-  
     dispatch({
       type: LOAD_ALLPOST_REQUEST,
       data: location_list,

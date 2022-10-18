@@ -14,6 +14,7 @@ export const initialState = {
   postUpDone: false,
   postUpError: null,
   me: null,
+  meAddress: null,
   signUpDate: {},
   loginData: {},
 };

@@ -2,20 +2,21 @@ import React, { useEffect, useState, useCallback, useMemo } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import Header from "../../pages/components/header";
-import PostCard from "../../pages/postCard";
-import { LOAD_POSTS_REQUEST } from "../../reducers/post";
+import Header from "../pages/components/header";
+import PostCard from "../pages/postCard";
+import { LOAD_POSTS_REQUEST } from "../reducers/post";
 import { END } from "redux-saga";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+const mainPosts = [{ title: "치킨", address: "지민집" ,posts:{"제목":}}];
 const PostCards = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { id } = router.query;
-  const { mainPosts, loadPostsDone } = useSelector((state) => state.post);
+  // const { mainPosts, loadPostsDone } = useSelector((state) => state.post);
   const { postcards, setpostcards } = useState([]);
-
+  console.log(mainPosts.title);
   useEffect(() => {
     dispatch({
       type: LOAD_POSTS_REQUEST,

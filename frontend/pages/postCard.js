@@ -3,11 +3,10 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 
 const PostCard = ({ post }) => {
-  console.log(post)
-  const [day , time] = post.content.updated_at.split("T");
-  const hours = time.split(".")[0].split(':')[0];
-  const minutes = time.split(".")[0].split(':')[1];
-  const seconds = time.split(".")[0].split(':')[2];
+  const [day, time] = post.content.updated_at.split("T");
+  const hours = time.split(".")[0].split(":")[0];
+  const minutes = time.split(".")[0].split(":")[1];
+  const seconds = time.split(".")[0].split(":")[2];
 
   return (
     <div className="h-160 w-73 p-8 m-3 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -17,32 +16,31 @@ const PostCard = ({ post }) => {
 
       <div className=" ">
         <h5 className="mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {post.content.title} 
+          {post.content.title}
         </h5>
 
         <p className="mb-2 text-s font-normal tracking-tight text-gray-900 dark:text-white">
-          {day}  &nbsp;{hours+":"+minutes+":"+seconds}
-          
+          {day} &nbsp;{hours + ":" + minutes + ":" + seconds}
         </p>
 
-      <span className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-        {post.content.writer}
-      </span>
+        <span className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {post.content.writer}
+        </span>
       </div>
-      
 
       <div className="grid grid-cols-3 gap-4">
         <a className=" m-3 col-end-7 col-span-1 inline-flex items-center rounded-md border border-transparent bg-indigo-100 py-2 px-3 text-sm font-medium text-center text-white bg-[#6A64F1] rounded-lg hover:bg-[#5f57ff] focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          {post.content.comments_count} 
+          {post.content.comments_count}
           <Link
             href={{
               pathname: `/content/[post_id]`,
-              query: { address: JSON.stringify(post.address) ,post_id:post.content.id},
-           
+              query: {
+                address: JSON.stringify(post.address),
+                post_id: post.content.id,
+              },
             }}
-       
           >
-          명과 함께 배달
+            명과 함께 배달
           </Link>
           <svg
             aria-hidden="true"

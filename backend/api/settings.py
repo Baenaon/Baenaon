@@ -191,6 +191,6 @@ INTERNAL_IPS = [
     # ...
 ]
 
-CORS_ORIGIN_WHITELIST = ('http://0.0.0.1:3000', 'http://localhost:3000', "http://3.36.170.120:8080", "http://baenaon.com", "http://www.baenaon.com")
+CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:3000','http://0.0.0.1:3000', 'http://localhost:3000', "http://3.36.170.120:8080", "http://baenaon.com", "http://www.baenaon.com")
 
 CORS_ALLOW_CREDENTIALS = True

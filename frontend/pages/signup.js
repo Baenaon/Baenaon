@@ -5,7 +5,7 @@ import { SIGN_UP_REQUEST } from "../reducers/user";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Router from "next/router";
-import {frontUrl} from "../config/config";
+import { frontUrl } from "../config/config";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -87,110 +87,119 @@ const Signup = () => {
       data: { email, password, nickname, address_static },
     });
   }, [email, password, passwordCheck, term]);
+  console.log(popup);
 
   return (
-    <main className="mx-auto flex min-h-screen w-full items-center justify-center  text-black">
-      <section className="flex w-[30rem] flex-col space-y-10">
-        <div className="text-center text-4xl font-medium">회원가입</div>
-
-        <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-          <label htmlFor={"user-email"}>이메일</label>
-
-          <input
-            name="user-email"
-            value={email}
-            required
-            onChange={onChangeEmail}
-            className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
-          />
-        </div>
-
-        <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-          <label htmlFor={"user-username"}>유저네임</label>
-
-          <input
-            name="user-username"
-            value={nickname}
-            required
-            onChange={onChangeUsername}
-            className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
-          />
-        </div>
-
-        <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-          <label htmlFor={"user-address"}>주소</label>
-
-          <input
-            name="user-address"
-            value={address_static}
-            required
-            onChange={onChangeAddress}
-            className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
-          />
-
-          <div className=" flex justify-end ">
-            <button
-              type="button"
-              className="justify-end border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline"
-              onClick={handleComplete}
-              onChange={onChangeAddress}
-            >
-              주소찾기
-            </button>
+    <main className="bg-[#F8F8F8] mx-auto flex min-h-screen  items-center justify-center ">
+      <section className="drop-shadow-2xl mt-50 bg-white rounded-lg w-[45rem] h-[50rem] p-16">
+        <div className=" text-4xl font-medium font-custom">Join</div>
+        <div className="">
+          <div className="w-full mt-10 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-[#42DDBB]">
+            <label htmlFor={"user-email"}></label>
+            <input
+              name="user-email"
+              value={email}
+              onChange={onChangeEmail}
+              required
+              type="email"
+              placeholder="이메일"
+              className="w-full border-none bg-transparent outline-none focus:outline-none"
+            />
           </div>
+
+          <div className="w-full mt-6 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-[#42DDBB]">
+            <label htmlFor={"user-username"}></label>
+
+            <input
+              name="user-username"
+              value={nickname}
+              required
+              onChange={onChangeUsername}
+              placeholder="닉네임"
+              className="w-full border-none bg-transparent outline-none focus:outline-none"
+            />
+          </div>
+
+          <div className="w-full mt-6 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-[#42DDBB]">
+            <label htmlFor={"user-address"}></label>
+
+            <input
+              name="user-address"
+              value={address_static}
+              required
+              onChange={onChangeAddress}
+              placeholder="주소"
+              className="w-full border-none bg-transparent outline-none focus:outline-none"
+            />
+          </div>
+          <button
+            type="button"
+            className="w-full mt-3 transform outline outline-offset-0 text-white rounded-sm bg-[#42DDBB] py-2 font-bold hover:bg-white hover:text-[#42DDBB] "
+            onClick={handleComplete}
+            onChange={onChangeAddress}
+          >
+            주소찾기
+          </button>
+
           {popup && (
-            <Postcode get_data={get_data} address={address_static}></Postcode>
+            <div>
+              <Postcode get_data={get_data} address={address_static}></Postcode>
+            </div>
           )}
-        </div>
 
-        <div className="flexbox w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-          <label htmlFor={"user-password"}>비밀번호</label>
-          <input
-            name="user-password"
-            value={password}
-            required
-            onChange={onChangePassword}
-            className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
-          />
-        </div>
+          <div className="w-full mt-7 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-[#42DDBB]">
+            <label htmlFor={"user-password"}></label>
+            <input
+              name="user-password"
+              value={password}
+              required
+              onChange={onChangePassword}
+              placeholder="비밀번호"
+              className="w-full border-none bg-transparent outline-none focus:outline-none"
+            />
+          </div>
 
-        <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-          <label htmlFor={"user-password-check"}>비밀번호 확인</label>
-          <input
-            name="user-password-check"
-            type="password"
-            value={passwordCheck}
-            required
-            onChange={onChangePasswordCheck}
-            className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
-          />
-        </div>
+          <div className="w-full mt-6 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-[#42DDBB]">
+            <label htmlFor={"user-password-check"}></label>
+            <input
+              name="user-password-check"
+              type="password"
+              value={passwordCheck}
+              required
+              onChange={onChangePasswordCheck}
+              placeholder="비밀번호 확인"
+              className="w-full border-none bg-transparent outline-none focus:outline-none"
+            />
+          </div>
 
-        <div>
-          {passwordError && (
-            <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-              <span className="font-medium"></span> 비밀번호가 일치하지
-              않습니다.
-            </p>
-          )}
-        </div>
+          <div>
+            {passwordError && (
+              <p className="mt-2 items-center text-sm text-red-600 dark:text-red-500">
+                <span className="font-medium "></span> 비밀번호가 일치하지
+                않습니다.
+              </p>
+            )}
+          </div>
 
-        <div className="flex items-start mb-6">
-          <div className="flex items-center h-5">
+          <div className="flex mt-10 justify-center items-center">
             <input
               name="user-term"
               checked={term}
               onChange={onChangeTerm}
               onClick={onSubmit}
               type="checkbox"
-              className="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded"
-              required=""
+              className=" border-none bg-[#42DDBB] outline-none placeholder:italic focus:outline-none"
             ></input>
+
+            <div className="text-sm  ">
+              <label htmlFor="remember" className="font-medium text-[#979797]">
+                &nbsp;&nbsp;회원가입시 배나온 서비스 이용 약관 및 개인정보정책에
+                동의하게 됩니다.
+              </label>
+            </div>
           </div>
-          <div className="text-sm ml-3">
-            <label htmlFor="remember" className="font-medium text-gray-900">
-              회원가입에 동의합니다.
-            </label>
+
+          <div className=" justify-center">
             <div>
               {termError && (
                 <p className="mt-2 text-sm text-red-600 dark:text-red-500">
@@ -199,18 +208,18 @@ const Signup = () => {
                 </p>
               )}
             </div>
-          </div>
 
-          <div className="w-full text-center mx-auto">
-            <button
-              type="primary"
-              htmlType="submit"
-              onClick={onSubmitForm}
-              loading={signUpLoading}
-              className="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline"
-            >
-              가입하기
-            </button>
+            <div className="w-full text-center mt-4">
+              <button
+                type="primary"
+                htmlType="submit"
+                onClick={onSubmitForm}
+                loading={signUpLoading}
+                className="w-full transform outline outline-offset-0 text-white rounded-sm bg-[#42DDBB] py-2 font-bold hover:bg-white hover:text-[#42DDBB] "
+              >
+                가입하기
+              </button>
+            </div>
           </div>
         </div>
       </section>

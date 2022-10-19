@@ -46,7 +46,7 @@ const PostForm = () => {
           title: title,
           content: content,
           category: category,
-          address_id: address_id,
+          address: address3,
         },
       };
 

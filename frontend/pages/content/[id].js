@@ -47,77 +47,67 @@ const Content = ({}) => {
   };
 
   useEffect(() => {
-    // console.log("통신 전 확인")
     dispatch({
       type: LOAD_POST_REQUEST,
       data: id,
     });
   }, [id, singlePost]);
 
-  console.log("통신전 확인")
+  console.log(singlePost);
 
   return (
     <div>
-      <div>
-        <Header />
-        {/*<a*/}
-        {/*  onClick={onRemove}*/}
-        {/*  className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-[#6A64F1] rounded-lg hover:bg-[#5f57ff] focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"*/}
-        {/*>*/}
-        {/*  삭제*/}
-        {/*  <svg*/}
-        {/*    aria-hidden="true"*/}
-        {/*    className="ml-2 -mr-1 w-4 h-4"*/}
-        {/*    fill="currentColor"*/}
-        {/*    viewBox="0 0 20 20"*/}
-        {/*    xmlns="http://www.w3.org/2000/svg"*/}
-        {/*  ></svg>*/}
-        {/*</a>*/}
+      {singlePost ? (
+        <div>
+          <Header />
 
-        <div className=" items-center justify-center p-12">
-          <div class="flex justify-between items-center ">
-            <button
-              type="button"
-              value="한식"
-              class="rounded-xl inline-block text-[17px] outline outline-offset-0 border-0 px-9 py-3 bg-[#FFD15C] text-white hover:bg-[#FFD15C] hover:text-white focus:bg-[#FFD15C] focus:text-white "
-            >
-              한식
-              {/* {singlePost.category} */}
-            </button>
-            <div className=" text-[#555555] title-font font-light mb-1">
-              {/* 2020-10-17 22:48:00 */}
-              {/* {singlePost.updated_at.split("T")[0]}{" "}
+          <div className=" items-center justify-center p-12">
+            <div class="flex justify-between items-center ">
+              <button
+                type="button"
+                value="한식"
+                class="rounded-xl inline-block text-[17px] outline outline-offset-0 border-0 px-9 py-3 bg-[#FFD15C] text-white hover:bg-[#FFD15C] hover:text-white focus:bg-[#FFD15C] focus:text-white "
+              >
+                한식
+                {/* {singlePost.category} */}
+              </button>
+              <div className=" text-[#555555] title-font font-light mb-1">
+                {/* 2020-10-17 22:48:00 */}
+                {/* {singlePost.updated_at.split("T")[0]}{" "}
               {singlePost.updated_at.split("T")[1].split(".")[0]} */}
+              </div>
+            </div>
+
+            <div class="mt-7">
+              <label
+                for="message"
+                className="mb-5 font-custom text-[25px] block text-base font-medium text-[#07074D]"
+              >
+                저랑 연어초밥 같이 시켜먹어요
+                {/* {singlePost.title} */}
+              </label>
+              <p
+                rows="9"
+                id="message"
+                class="w-full h-40 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#42DDBB] "
+              >
+                연어초밥 시키실 분 구합니다
+                {/* {singlePost.content} */}
+              </p>
+            </div>
+            <div className=" mt-10">
+              <div className="">{/* <p>{singlePost.content}</p> */}</div>
+
+              <CommentForm post_id={id} />
+              {singlePost.comments.map((c) => {
+                return <Comment key={c.id} comments={c} />;
+              })}
             </div>
           </div>
-
-          <div class="mt-7">
-            <label
-              for="message"
-              className="mb-5 font-custom text-[25px] block text-base font-medium text-[#07074D]"
-            >
-              저랑 연어초밥 같이 시켜먹어요
-              {/* {singlePost.title} */}
-            </label>
-            <p
-              rows="9"
-              id="message"
-              class="w-full h-40 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#42DDBB] "
-            >
-              연어초밥 시키실 분 구합니다
-              {/* {singlePost.content} */}
-            </p>
-          </div>
-          <div className=" mt-10">
-            <div className="">{/* <p>{singlePost.content}</p> */}</div>
-
-            <CommentForm post_id={id} />
-            {singlePost.comments.map((c) => {
-              return <Comment key={c.id} comments={c} />;
-            })}
-          </div>
         </div>
-      </div>
+      ) : (
+        <div>loading...</div>
+      )}
     </div>
   );
 };

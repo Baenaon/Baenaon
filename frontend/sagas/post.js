@@ -184,6 +184,7 @@ function* addComment(action) {
 // //게시글 하나 불러오기
 
 function loadPostAPI(data) {
+  console.log("게시판 통신 되는지")
   return axios.get(backUrl + `/api/posts/${data}/`);
 }
 

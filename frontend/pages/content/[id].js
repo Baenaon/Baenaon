@@ -47,6 +47,7 @@ const Content = ({}) => {
   };
 
   useEffect(() => {
+    console.log("통신 전 확인")
     dispatch({
       type: LOAD_POST_REQUEST,
       data: id,

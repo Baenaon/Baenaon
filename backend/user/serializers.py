@@ -35,10 +35,10 @@ class UserSignUpSerializer(serializers.ModelSerializer):
             match_first = result['documents'][0]['address']
             lat = float(match_first['y'])  # 위도
             long = float(match_first['x'])  # 경도
-            if PostAddress.objects.filter(addressname=validated_data['address']):
+            if Address.objects.filter(addressname=validated_data['address']):
                 pass
             else:
-                PostAddress.objects.create(addressname=validated_data['address'])
+                Address.objects.create(addressname=validated_data['address'])
         except:
             lat = 0.0
             long = 0.0

@@ -98,7 +98,7 @@ def kakao_callback(request):
     client_id = "b2591ba5c1ea35054b56c6152c7d0d77"
     code = request.GET.get("code", None)
     print(code)
-    redirect_uri = "http://127.0.0.1:3000/oauth/callback/kakao"
+    redirect_uri = "http://baenaon.com/oauth/callback/kakao"
     token_request = requests.get( f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={redirect_uri}&code={code}" )
     print(token_request.json())
     token_json = token_request.json()
@@ -157,4 +157,3 @@ def kakao_callback(request):
         return JsonResponse(results, status=status.HTTP_201_CREATED)
     else:
         return JsonResponse({'message':'user already exist'}, status=status.HTTP_400_BAD_REQUEST)
-

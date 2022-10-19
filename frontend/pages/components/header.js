@@ -41,7 +41,7 @@ export default function Header() {
             <a className="font mr-5 hover:text-gray-900" href="/#">
               Home
             </a>
-            <a className="mr-5 hover:text-gray-900" href="/posts">
+            <a className="mr-5 hover:text-gray-900" href="/categorypost">
               게시글
             </a>
             <a className="mr-5 hover:text-gray-900" href="/postForm">

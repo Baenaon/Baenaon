@@ -49,7 +49,7 @@ const PostForm = () => {
           address: address3,
         },
       };
-
+      console.log("formdata 확인", formData)
       dispatch({
         type: ADD_POST_REQUEST,
         data: formData,
@@ -65,7 +65,7 @@ const PostForm = () => {
     },
     [title, content]
   );
-  console.log(category);
+
   return (
     <div>
       <Header />

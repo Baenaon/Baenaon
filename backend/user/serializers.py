@@ -1,6 +1,8 @@
 from django.contrib.auth.models import update_last_login
 from django.contrib.auth import authenticate, get_user_model
-
+from urllib.parse import urlparse
+import requests
+import my_settings
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -8,6 +10,7 @@ from rest_framework_simplejwt.token_blacklist.models import OutstandingToken
 from rest_framework_simplejwt.utils import datetime_from_epoch
 
 from post.models import Comment, Post
+from map.models import Address
 
 
 JWT_PAYLOAD_HANDLER = api_settings.JWT_PAYLOAD_HANDLER

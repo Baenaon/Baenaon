@@ -19,7 +19,7 @@ class PostCreate(generics.CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         serializer = PostCreateSerializer(data=request.data)
-        address = Address.objects.filter(address=request.data['address'])
+        address = Address.objects.filter(addressname=request.data['address'])
 
         if serializer.is_valid():
             post = Post.objects.create(

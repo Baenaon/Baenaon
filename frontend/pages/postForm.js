@@ -21,12 +21,14 @@ const PostForm = () => {
   const address_id = router.query.id;
 
   const [address2, setaddress2] = useState({});
+  const [address3, setaddress3] = useState({});
   const [access_token, set_access_token] = useState({});
   const [category, set_Menu] = useState("");
   const address = "상왕십리 무학로 33 텐즈힐아파트";
 
   useEffect(() => {
     set_access_token(window.localStorage.getItem("access_token"));
+    setaddress3(window.localStorage.getItem("address"));
     if (address1 != null) {
       setaddress2(JSON.parse(address1));
     }
@@ -78,7 +80,7 @@ const PostForm = () => {
 
              text-[#07074D]"
             >
-              {address}
+              {`${address3}`}
               {/* {address2.locationname}&nbsp; /&nbsp; {address2.addressname} */}
             </label>
           </div>

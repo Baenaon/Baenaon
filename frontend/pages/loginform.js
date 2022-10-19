@@ -81,13 +81,13 @@ const LoginForm = () => {
               type="primary"
               loading={logInLoading}
               onClick={onSubmitForm}
-              className="w-full mt-3 transform outline outline-offset-0 text-white rounded-sm bg-[#42DDBB] py-2 font-bold hover:bg-white hover:text-[#42DDBB] "
+              className="w-full h-16 mt-3 text-[14px] transform outline outline-offset-0 text-white rounded-sm bg-[#42DDBB] py-2 font-bold hover:bg-white hover:text-[#42DDBB] "
             >
               로그인
             </button>
             <div class="w-full">
               <a href={KAKAO_AUTH_URL}>
-                <img src="/kakao_logo.png" class="center" />
+                <img src="/kakao_login.png" class="center" />
               </a>
             </div>
             <div className="flex items-center justify-center">

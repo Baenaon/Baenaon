@@ -18,7 +18,6 @@ import {
 import { backUrl } from "../config/config";
 
 function logInAPI(data) {
-  console.log(data);
   return axios.post(backUrl + "/api/user/signin/", data);
 }
 
@@ -29,7 +28,7 @@ function* logIn(action) {
 
     localStorage.setItem("access_token", result.data.access_token);
     localStorage.setItem("refresh_token", result.data.refresh_token);
-    console.log(result.data);
+    localStorage.setItem("address", result.data.address);
 
     yield put({
       type: LOG_IN_SUCCESS,
@@ -69,7 +68,7 @@ function signUpAPI(data) {
 function* Signup(action) {
   try {
     const result = yield call(signUpAPI, action.data);
-    console.log("access", result.data);
+
     yield put({
       type: SIGN_UP_SUCCESS,
     });

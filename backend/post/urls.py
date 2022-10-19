@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import CommentCreate, CommentDetail, PostCreate, PostDetail, PostList, UserPostsList, UserCommentsList, CategorySearchListView
-
+from .views import CommentCreate, CommentDetail, PostCreate, PostDetail, PostList, UserPostsList, UserCommentsList, CategorySearchListView, NearTheUserPosts
 app_name = 'posts'
 
 urlpatterns = [
@@ -13,7 +12,7 @@ urlpatterns = [
         # 게시글(pk에 해당하는 게시글)에 댓글 하나 생성
         path('<int:pk>/comments/create/', CommentCreate.as_view(), name='post-comment-create'),
         # 게시글들 목록
-        path('', PostList.as_view(), name='post-list'),
+        path('', NearTheUserPosts.as_view(), name='near-the-user-posts'),
         # 내가 쓴글 확인
         path('user/', UserPostsList.as_view(), name='user-posts'),
         # 내가 쓴 댓글 확인

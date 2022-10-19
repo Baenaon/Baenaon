@@ -47,14 +47,14 @@ const Content = ({}) => {
   };
 
   useEffect(() => {
-    console.log("통신 전 확인")
+    // console.log("통신 전 확인")
     dispatch({
       type: LOAD_POST_REQUEST,
       data: id,
     });
   }, [id, singlePost]);
 
-  console.log(singlePost);
+  console.log("통신전 확인")
 
   return (
     <div>

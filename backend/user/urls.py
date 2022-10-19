@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import UserSignIn, UserSignUp, MypageList, BlacklistTokenView, MypageComment, MypagePost, kakao_login, kakao_callback
+from .views import UserSignIn, UserSignUp, MypageList, BlacklistTokenView, MypageComment, MypagePost, kakao_login, kakao_callback, KakaoAddressCreate
 
 from rest_framework_simplejwt import views as jwt_views
 
@@ -20,4 +20,5 @@ urlpatterns = [
         path('mypage/posts/', MypagePost.as_view()),
         path('login/kakao/', kakao_login, name='kakao_login'),
         path('login/kakao/callback/', kakao_callback),
+        path('kakao/address/create/', KakaoAddressCreate.as_view(), name='kakao_address_create'),
 ]

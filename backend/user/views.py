@@ -20,6 +20,7 @@ from .serializers import UserSignInSerializer, UserSignUpSerializer, MypageListS
 
 from user.models import User
 from post.models import Post, Comment
+from map.models import Address
 
 from .permissions import IsOwner
 
@@ -157,3 +158,14 @@ def kakao_callback(request):
         return JsonResponse(results, status=status.HTTP_201_CREATED)
     else:
         return JsonResponse({'message':'user already exist'}, status=status.HTTP_400_BAD_REQUEST)
+
+class KakaoAddressCreate(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        request.user.address = request.data['address']
+        request.user.save()
+        if Address.objects.filter(addressname=request.data['address']):
+            pass
+        else:
+            Address.objects.create(addressname=request.data['address'])
+        return JsonResponse({"message":'success'}, status=status.HTTP_201_CREATED)

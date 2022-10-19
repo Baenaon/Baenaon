@@ -8,10 +8,6 @@ class Address(models.Model):
         verbose_name = 'address_name',
         max_length = 100,
     )
-    locationName = models.CharField(
-        verbose_name = 'location_name',
-        max_length = 50,
-    )
     lat = models.FloatField(
         verbose_name = 'lat',
         blank=True,

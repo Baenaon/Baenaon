@@ -28,10 +28,27 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
+        try:
+            url = 'https://dapi.kakao.com/v2/local/search/address.json?query=' + validated_data['address']
+            result = requests.get(urlparse(url).geturl(),
+                                  headers={'Authorization': f"KakaoAK {my_settings.KAKAO_REST_API_KEY}"}).json()
+            match_first = result['documents'][0]['address']
+            lat = float(match_first['y'])  # 위도
+            long = float(match_first['x'])  # 경도
+            if PostAddress.objects.filter(addressname=validated_data['address']):
+                pass
+            else:
+                PostAddress.objects.create(addressname=validated_data['address'])
+        except:
+            lat = 0.0
+            long = 0.0
+
         user = User.objects.create(
             email=validated_data['email'],
             nickname=validated_data['nickname'],
             address=validated_data['address'],
+            lat=lat,
+            long=long
         )
         user.set_password(validated_data['password'])
         user.save()
@@ -68,6 +85,9 @@ class UserSignInSerializer(serializers.Serializer):
         results = {
             'id': user.id,
             'email': user.email,
+            'address': user.address,
+            'lat': user.lat,
+            'long': user.long,
             'refresh_token': refresh_token,
             'access_token': access_token
         }

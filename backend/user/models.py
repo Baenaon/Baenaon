@@ -37,12 +37,14 @@ class UserManager(BaseUserManager):
         return user
 
 
-    def create_superuser(self, email, nickname, address, password):
+    def create_superuser(self, email, nickname, address, lat, long, password):
         user = self.create_user(
                 email,
                 nickname = nickname,
                 address = address,
-                password = password
+                password = password,
+                lat = lat,
+                long = long
                 )
         user.is_staff = True
         user.is_superuser = True
@@ -77,7 +79,16 @@ class User(AbstractBaseUser,  PermissionsMixin):
         max_length=200,
         default=""
     )
-
+    lat = models.FloatField(
+        verbose_name='lat',
+        blank=True,
+        null=True,
+    )
+    long = models.FloatField(
+        verbose_name='long',
+        blank=True,
+        null=True,
+    )
     login_method = models.CharField(
         max_length=6, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
     )
@@ -95,3 +106,6 @@ class User(AbstractBaseUser,  PermissionsMixin):
 
     class Meta:
         db_table = 'users'
+
+    def __str__(self):
+        return self.nickname

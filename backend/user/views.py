@@ -24,7 +24,7 @@ from map.models import Address
 
 from .permissions import IsOwner
 
-from my_settings import KAKAO_REST_API_KEY, KAKAO_REDIRECT_URI, KAKAO_API
+from my_settings import KAKAO_REST_API_KEY, KAKAO_REDIRECT_URI
 
 
 
@@ -99,7 +99,7 @@ def kakao_callback(request):
     client_id = my_settings.KAKAO_REST_API_KEY
     code = request.GET.get("code", None)
     print(code)
-    redirect_uri = "http://baenaon.com/oauth/callback/kakao"
+    redirect_uri = my_settings.KAKAO_REDIRECT_URI
     token_request = requests.get( f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={redirect_uri}&code={code}" )
     print(token_request.json())
     token_json = token_request.json()

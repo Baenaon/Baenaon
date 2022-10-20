@@ -210,31 +210,6 @@
 
 ### Installation
 
-**Frontend**
-> <br>
-> - 새로운 쉘 생성하여 frontend 디렉터리 `/frontend`로 이동
-
-> ```bash
-> $ cd frontend
-> ```
->
-> ```bash
-> $ npm i next
-> $ npm i next-redux-wrapper
-> $ npm i redux
-> $ npm i react-redux
-> $ npm i redux-saga
-> $ npm i redux-devtools-extension
-> $ npm i --save react-lottie-player
-> $ npm i react-router-dom
-> $ npm i redux-devtools-extension
-> $ npm i axios
-> $ npm i immer
-> $ npm i react-kakao-maps-sdk
-> $ npm i react-daum-postcode
-> ```
-
-
 **Backend**
 >
 > <br>
@@ -279,16 +254,32 @@
 > ![image](https://user-images.githubusercontent.com/95459089/190483715-1e10646e-e0b8-47c7-9852-c3ba12f937c8.png)
 > 
 > 3-5. REST API 키 복사 후 저장
->
-> **4. my_settings.py파일 생성 후 자신의 시크릿 키(장고, 카카오 API), 데이터베이스 넣기**
+> 3-6. 내 애플리케이션 > 앱 설정 > 플랫폼 클릭
+> ![image](https://user-images.githubusercontent.com/95459089/196997385-49582f47-c4ab-42bb-ac7a-5a8da97fe860.png)
+> 3-7. 사이트 도메인에 위의 그림처럼 3개의 주소 등록
+> 3-8. 밑에 Redirect URI 등록하러 가기 클릭
+> 3-9. 활성화 상태 ON으로 변경
+> ![image](https://user-images.githubusercontent.com/95459089/196997791-8628e43c-660d-4661-a652-f5b8dea64daa.png)
+> 3-10. Redirect URI 설정
+> ![image](https://user-images.githubusercontent.com/95459089/196998632-cb460dcd-ccec-4c30-bea1-d096c024b630.png)
+> **무조건 front의 URI로 설정해야 한다.**
 > 
-> ![image](https://user-images.githubusercontent.com/87630540/190362704-92f72db2-09aa-4552-b0f7-4ebf542a16f7.png)
+>
+>
+> **4. my_settings.py파일 생성 후 자신의 시크릿 키(장고, 카카오 API)넣기**
+> 
+> ![image](https://user-images.githubusercontent.com/95459089/196996833-98a08f15-192d-4810-a9ea-2b5863dfe042.png)
+> 
+> **backend 하위 폴더에 생성해야 한다!**
 > 
 > 4-1. 3-5에서 저장한 REST API키를 KAKAO_REST_API_KEY에 입력
 >
 > 4-2. SECRET_KEY는 자신만의 파이썬 SECRET_KEY 입력
+> 
 >
-> 4-3. my_setings 파일은 backend 폴더 안에 생성을 해야하며, my_settings에서 설정한 NAME과 같은 데이터베이스가 생성이 되어있어야 합니다.
+> 4-3. 3-10에서 설정한 Redirect URI를 KAKAO_REDIRECT_URI에 입력
+>
+> **my_settings.py에서 넣어줄 KAKAO_REDIRECT_URI는 뒤에 /가 무조건 붙어있어야 한다!**
 > 
 > **5. 데이터 베이스에 반영**
 > ```bash
@@ -298,10 +289,69 @@
 >  ```bash
 >  python manage.py migrate
 > ```
+>
+> 5-1. 관리자 계정 생성하기
+> ```bash
+> python manage.py createsuperuser
+> ```
 > 
 > **6. 서버 실행**
 >
 > ```bash
 > python manage.py runserver
 > ```
+>
+> 6-1. 관리자 사이트 접속 확인
+>
+> http://127.0.0.1:8000/admin/ 접속 후, 설정한 관리자 계정으로 로그인
+>
+> ![image](https://user-images.githubusercontent.com/95459089/197001627-54bf6812-8c9e-4f63-8141-703d3da97d77.png)
 
+
+**Frontend**
+> <br>
+> - 새로운 쉘 생성하여 frontend 디렉터리 `/frontend`로 이동
+>
+> ```bash
+> $ cd frontend
+> ```
+> **1. 필요한 라이브러리 설치**
+>
+> **해당 명령어를 수행하기 전에 Node.js가 설치되어 있어야 합니다!**
+>
+>
+> ```bash
+> npm i next
+> npm i next-redux-wrapper
+> npm i redux
+> npm i react-redux
+> npm i redux-saga
+> npm i redux-devtools-extension
+> npm i --save react-lottie-player
+> npm i react-router-dom
+> npm i redux-devtools-extension
+> npm i axios
+> npm i immer
+> npm i react-kakao-maps-sdk
+> npm i react-daum-postcode
+> npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+> ```
+>
+> **2. package.json 파일 수정**
+>
+> ![image](https://user-images.githubusercontent.com/95459089/197002626-55648088-0ad9-4c36-b140-823cf4b65b9c.png)
+> 
+> 2-1 export PORT=8080 &&를 지우고 next dev만 남긴다.
+>
+> ![image](https://user-images.githubusercontent.com/95459089/197003142-f4071c35-dfe2-4aa4-bdec-8dd20fe2c16f.png)
+>
+> **3. config.js 파일 수정**
+>
+> 3-1 frontend 하위 폴더 config 폴더로 이동
+> 
+> 3-2 config.js 파일로 이동
+>
+> ![image](https://user-images.githubusercontent.com/95459089/197004855-097984a5-e4b3-4e26-8e50-839fb2ddca58.png)
+>
+> **4. 결과**
+> ![image](https://user-images.githubusercontent.com/95459089/197020888-dc6ab781-25d4-490a-87a0-27b989b1b542.png)

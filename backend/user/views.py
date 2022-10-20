@@ -96,7 +96,7 @@ def kakao_login(request):
 
 
 def kakao_callback(request):
-    client_id = "b2591ba5c1ea35054b56c6152c7d0d77"
+    client_id = my_settings.KAKAO_REST_API_KEY
     code = request.GET.get("code", None)
     print(code)
     redirect_uri = "http://baenaon.com/oauth/callback/kakao"

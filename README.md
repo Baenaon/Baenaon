@@ -353,5 +353,13 @@
 >
 > ![image](https://user-images.githubusercontent.com/95459089/197004855-097984a5-e4b3-4e26-8e50-839fb2ddca58.png)
 >
-> **4. 결과**
+> **4. 실행**
+>
+> ```bash
+> npm run dev
+> ```
+> 위 명령어를 사용하여 실행
+> **backend 서버가 열려 있어야 통신이 됩니다!**
+>
+> **5. 결과**
 > ![image](https://user-images.githubusercontent.com/95459089/197020888-dc6ab781-25d4-490a-87a0-27b989b1b542.png)

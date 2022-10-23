@@ -35,8 +35,6 @@ const LoginForm = () => {
   }, [logInError]);
 
   const onSubmitForm = useCallback(() => {
-    console.log(email, password);
-    console.log(KAKAO_AUTH_URL);
     dispatch(loginRequestAction({ email, password }));
   }, [email, password]);
 

@@ -117,7 +117,7 @@ class CategorySearchListView(generics.ListAPIView):
                 'updated_at': post.updated_at,
                 'distance': '',
             } for post in Post.objects.filter(category=request.GET.get('search'))]
-
+        result.sort(reverse=True, key=lambda x : x['updated_at'])
         return JsonResponse({'result': result}, status=status.HTTP_200_OK)
 
 class UserCommentsList(generics.ListAPIView):

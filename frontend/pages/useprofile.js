@@ -90,7 +90,7 @@ const userprofile = () => {
                       당신의 주문을 기다리고 있어요 !
                     </p>
                     <a
-                      href="/categorypost"
+                      href="/postForm"
                       className="font-normal text-slate-700 hover:text-slate-400"
                     >
                       주문하러 가기

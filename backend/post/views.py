@@ -7,6 +7,7 @@ from map.models import Address
 from .serializers import CommentSerializer, PostCreateSerializer, PostDetailSerializer, PostListSerializer
 
 from .models import Post, Comment
+from django.http import JsonResponse
 
 from .permissions import IsOwnerOrReadOnly
 
@@ -43,6 +44,7 @@ class PostList(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostListSerializer
     permission_classes = [AllowAny]
+    ordering = ['-updated_at']
 
 
 class CommentCreate(generics.CreateAPIView):
@@ -86,7 +88,7 @@ class CategorySearchListView(generics.ListAPIView):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     # SearchFilter
     search_fields = ['category']
-    ordering_fields = ['-updated_at']
+    ordering = ['-updated_at']
 
 class UserCommentsList(generics.ListAPIView):
     serializer_class = CommentSerializer
@@ -108,10 +110,11 @@ class NearTheUserPosts(generics.ListAPIView):
             # 유저의 주소
             user_address = user.address
             # 유저의 주소를 경도, 위도로 변환한 값
-            user_lat, user_long = user.lat, user.long
+            address = Address.objects.get(addressname=user_address)
+            user_lat, user_long = address.lat, address.long
             LATMOD = 109.958489129649955
             LONGMOD = 88.74
-            addresses = PostAddress.objects.all()
+            addresses = Address.objects.all()
             result = []
             for address in addresses:
                 if user_lat - 1/LATMOD <= address.lat <= user_lat + 1/LATMOD and \
@@ -119,14 +122,15 @@ class NearTheUserPosts(generics.ListAPIView):
                     for post in Post.objects.filter(address_id=address.id):
                         result.append({
                             'id': post.id,
-                            'username': post.user.nickname,
+                            'writer': post.user.nickname,
                             'title': post.title,
                             'category': post.category,
                             'content': post.content,
                             'created_at': post.created_at,
                             'updated_at': post.updated_at,
 
-                        })
+                            })
+            result.sort(reverse=True, key=lambda x: x["updated_at"])
             return JsonResponse({'result': result}, status=status.HTTP_200_OK)
         except KeyError:
             return JsonResponse({'err_msg': 'KEY_ERROR'}, stauts=status.HTTP_400_BAD_REQUEST)

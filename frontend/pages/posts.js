@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import Header from "../pages/components/header";
-import PostCardnew from "../pages/newpostCard";
+import PostCardnew from "../pages/newpostcard";
 import { LOAD_POSTS_REQUEST } from "../reducers/post";
 import { END } from "redux-saga";
 import { useRouter } from "next/router";

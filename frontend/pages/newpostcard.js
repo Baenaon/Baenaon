@@ -28,7 +28,7 @@ const PostCardnew = ({ post }) => {
           </div>
           <div class="w-30 pt-4">
             <div class="text-[#555555]  ">
-              어제부터 연어 초밥이 너무 먹고 싶었는데 같이 먹을 사람이 없어요
+	      {post.content.content}
             </div>
           </div>
           <div class="relative">

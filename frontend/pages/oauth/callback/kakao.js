@@ -23,7 +23,7 @@ const OAuth2RedirectHandler = (props) => {
         window.localStorage.setItem("access_token", access_token);
         window.localStorage.setItem("refresh_token", refresh_token);
 	window.localStorage.setItem("address", address); 
-     	if (res.data.address == ''){
+     	if (res.data.address == '' || !res.data.address){
           Router.push("/kakaoaddress")
         }
       	else{

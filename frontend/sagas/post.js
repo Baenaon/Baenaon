@@ -96,7 +96,6 @@ function* loadPosts(action) {
     console.log("통신시작", action.data.category);
     const result = yield call(loadPostsAPI, action.data.category);
     console.log("data", result.data);
-    s;
     yield put({
       type: LOAD_POSTS_SUCCESS,
       data: result.data,

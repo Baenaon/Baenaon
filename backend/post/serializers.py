@@ -13,11 +13,11 @@ class PostListSerializer(serializers.ModelSerializer):
     writer = serializers.ReadOnlyField(source='user.nickname')
     comments_count = serializers.SerializerMethodField()
     addressname= serializers.CharField(source='address.addressname')
+    ordering = ['-updated_at']
 
     class Meta:
         model = Post
         fields = ['id', 'title', 'writer', 'category', 'created_at', 'updated_at', 'comments_count', 'addressname', 'content']
-
     def get_comments_count(self, obj):
         comments = Comment.objects.filter(post_id=obj.id)
         # comments_count = {

@@ -99,12 +99,12 @@ function* loadPosts(action) {
   try {
     console.log("통신시작", action.data.category);
     const result = yield call(loadPostsAPI, action.data.category);
-    console.log("data", result.data);
+    console.log("data", result.data.result);
     console.log("길이", result.data.length);
     if(result.data.length != 0 && count == 0){	 
     	yield put({
       		type: LOAD_POSTS_SUCCESS,
-      		data: result.data,
+      		data: result.data.result,
     	});
 	console.log("테스트",count);
 	count += 1;

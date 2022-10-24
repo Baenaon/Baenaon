@@ -1,6 +1,6 @@
 import { all, fork, put, call, takeLatest } from "redux-saga/effects";
 import axios from "axios";
-
+import swal from "sweetalert";
 import {
   LOG_IN_FAILURE,
   LOG_IN_REQUEST,
@@ -25,6 +25,13 @@ function logInAPI(data) {
 function* logIn(action) {
   try {
     const result = yield call(logInAPI, action.data);
+    if (result.data.message === "fail") {
+      return swal(
+        "로그인 실패",
+        "아이디와 비밀번호를 확인해 주세요.",
+        "warning"
+      );
+    }
 
     localStorage.setItem("access_token", result.data.access_token);
     localStorage.setItem("refresh_token", result.data.refresh_token);
@@ -68,12 +75,19 @@ function signUpAPI(data) {
 function* Signup(action) {
   try {
     const result = yield call(signUpAPI, action.data);
+    
 
     yield put({
       type: SIGN_UP_SUCCESS,
     });
   } catch (err) {
-    console.log("fail");
+    if (err.response.status === 400) {
+      return swal(
+        "회원가입 실패",
+        "이미 같은 이메일/닉네임으로 가입한 사용자가 있습니다.",
+        "warning"
+      );
+    }
     yield put({
       type: SIGN_UP_FAILURE,
       error: err.response.data,

@@ -31,6 +31,11 @@ const PostCardnew = ({ post }) => {
 	      {post.content.content}
             </div>
           </div>
+	  <div class="w-30 pt-4">
+            <div class="text-[#555555]  ">
+	      나와의 거리 : {post.content.distance}
+            </div>
+          </div>
           <div class="relative">
             <div class="absolute bottom-0 right-0 flex text-[#555555]">
               <div>작성자 : </div>

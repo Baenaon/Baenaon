@@ -30,7 +30,7 @@ import { backUrl } from "../config/config";
 //게시글 올리기
 function addPostAPI(data) {
   const access = window.localStorage.getItem("access_token");
-
+  
   return axios.post(backUrl + "/api/posts/create/", data.send, {
     headers: {
       Authorization: `Bearer ${access}`,
@@ -47,7 +47,9 @@ function refreshToken() {
 
 function* addPost(action) {
   try {
+    console.log("통신전확인", action.data)
     const result = yield call(addPostAPI, action.data);
+    console.log("통신 이후 데이터", action.data)
 
     yield put({
       type: ADD_POST_SUCCESS,
@@ -184,7 +186,6 @@ function* addComment(action) {
 // //게시글 하나 불러오기
 
 function loadPostAPI(data) {
-  console.log("게시판 통신 되는지")
   return axios.get(backUrl + `/api/posts/${data}/`);
 }
 

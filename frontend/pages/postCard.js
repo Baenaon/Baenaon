@@ -35,7 +35,7 @@ const PostCard = ({ post }) => {
             href={{
               pathname: `/content/[post_id]`,
               query: {
-                address: JSON.stringify(post.address),
+                // address: JSON.stringify(post.address),
                 post_id: post.content.id,
               },
             }}

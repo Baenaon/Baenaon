@@ -27,15 +27,17 @@ export default function Header() {
 
   return (
     <>
-      <header className=" bg-[#42DDBB] h-20 text-white body-font">
-        <div className="container pt-5  flex justify-between  flex flex-wrap flex-col md:flex-row items-center">
+      <header className=" bg-[#42DDBB]  h-20 text-white body-font">
+        <div className=" pt-5 ml-20 mr-20 pl-20 pr-20 flex justify-between flex-col container md:flex-row items-center">
           <a
             className="text-white flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
             href="/#"
           >
             <img className="w-10 h-10" src="../../icon.png" />
-            <span className="font-custom ml-3 text-[#FFD15C] text-2xl">배</span>
-            <span className="font-custom text-2xl">나온</span>
+            <span className="font-custom ml-3 text-[#FFD15C] text-[30px]">
+              배
+            </span>
+            <span className="font-custom text-[30px]">나온</span>
           </a>
           <nav className="md:ml flex flex-wrap items-center text-base justify-center">
             <a className="font mr-5 hover:text-gray-900" href="/#">

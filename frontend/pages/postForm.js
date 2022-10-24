@@ -24,48 +24,46 @@ const PostForm = () => {
   const [address3, setaddress3] = useState({});
   const [access_token, set_access_token] = useState({});
   const [category, set_Menu] = useState("");
-  const address = "상왕십리 무학로 33 텐즈힐아파트";
+  // const address = "상왕십리 무학로 33 텐즈힐아파트";
+
+  const map1 = new Map();
+  map1.set("a", "한식");
+  map1.set("b", "중식");
+  map1.set("c", "일식");
+  map1.set("d", "치킨");
+  map1.set("e", "분식");
+  map1.set("f", "카페/디저트");
 
   useEffect(() => {
     set_access_token(window.localStorage.getItem("access_token"));
     setaddress3(window.localStorage.getItem("address"));
-    if (address1 != null) {
-      setaddress2(JSON.parse(address1));
-    }
-  }, [address1, access_token]);
+  }, [access_token]);
 
   const setMenu = useCallback((e) => {
     set_Menu(e.target.value);
   });
 
-  const onSubmit = useCallback(
-    (e) => {
-      const formData = {
-        access_token: access_token,
-        send: {
-          title: title,
-          content: content,
-          category: category,
-          address_id: address_id,
-        },
-      };
+  const onSubmit = useCallback((e) => {
+    const formData = {
+      access_token: access_token,
+      send: {
+        title: title,
+        content: content,
+        category: category,
+        address: address3,
+      },
+    };
 
-      dispatch({
-        type: ADD_POST_REQUEST,
-        data: formData,
-      });
-      e.preventDefault();
-      setTimeout(() => {
-        if (window.localStorage.getItem("post_success") === "true") {
-          Router.push("/map");
-        } else {
-          Router.push("/loginform");
-        }
-      }, 1000);
-    },
-    [title, content]
-  );
+    dispatch({
+      type: ADD_POST_REQUEST,
+      data: formData,
+    });
+    console.log(formData);
+    e.preventDefault();
+    Router.push("/");
+  });
   console.log(category);
+
   return (
     <div>
       <Header />
@@ -77,21 +75,20 @@ const PostForm = () => {
             </label>
             <label
               className="mb-3 block text-base font-light
-
              text-[#07074D]"
             >
               {`${address3}`}
               {/* {address2.locationname}&nbsp; /&nbsp; {address2.addressname} */}
             </label>
           </div>
-          <form onSubmit={onSubmit}>
+          <form>
             <div class="mb-5">
               <div class="flex items-center">
                 <label className="mb-3 mr-10 font-custom text-2xl block text-base font-medium text-[#07074D]">
                   음식 종류
                 </label>
                 <label class="mb-3 block text-base font-medium text-[#07074D]">
-                  {`${category}`}
+                  {`${map1.get(category)}`}
                 </label>
               </div>
               <div class=" items-center  justify-center mb-3">
@@ -99,7 +96,7 @@ const PostForm = () => {
                   <button
                     onClick={setMenu}
                     type="button"
-                    value="한식"
+                    value="a"
                     class="rounded-xl inline-block text-[17px] outline outline-offset-0 border-0 px-9 py-3 bg-white text-[#FFD15C] hover:bg-[#FFD15C] hover:text-white focus:bg-[#FFD15C] focus:text-white "
                   >
                     한식
@@ -107,7 +104,7 @@ const PostForm = () => {
                   <button
                     onClick={setMenu}
                     type="button"
-                    value="중식"
+                    value="b"
                     class="rounded-xl inline-block text-[17px] outline outline-offset-0 border-0 px-9 py-3 bg-white text-[#FFD15C] hover:bg-[#FFD15C] hover:text-white focus:bg-[#FFD15C] focus:text-white e "
                   >
                     중식
@@ -115,7 +112,7 @@ const PostForm = () => {
                   <button
                     onClick={setMenu}
                     type="button"
-                    value="일식"
+                    value="c"
                     class="rounded-xl inline-block text-[17px] outline outline-offset-0 border-0 px-9 py-3 bg-white text-[#FFD15C] hover:bg-[#FFD15C] hover:text-white focus:bg-[#FFD15C] focus:text-white  "
                   >
                     일식
@@ -123,7 +120,7 @@ const PostForm = () => {
                   <button
                     onClick={setMenu}
                     type="button"
-                    value="치킨"
+                    value="d"
                     class="rounded-xl inline-block text-[17px] outline outline-offset-0 border-0 px-9 py-3 bg-white text-[#FFD15C] hover:bg-[#FFD15C] hover:text-white focus:bg-[#FFD15C] focus:text-white  "
                   >
                     치킨
@@ -131,7 +128,7 @@ const PostForm = () => {
                   <button
                     onClick={setMenu}
                     type="button"
-                    value="분식"
+                    value="e"
                     class="rounded-xl inline-block text-[17px] outline outline-offset-0 border-0 px-9 py-3 bg-white text-[#FFD15C] hover:bg-[#FFD15C] hover:text-white focus:bg-[#FFD15C] focus:text-white "
                   >
                     분식
@@ -139,7 +136,7 @@ const PostForm = () => {
                   <button
                     onClick={setMenu}
                     type="button"
-                    value="카페/디저트"
+                    value="f"
                     class="rounded-xl inline-block text-[17px] outline outline-offset-0 border-0 px-9 py-3 bg-white text-[#FFD15C] hover:bg-[#FFD15C] hover:text-white focus:bg-[#FFD15C] focus:text-white  "
                   >
                     카페/디저트
@@ -174,7 +171,7 @@ const PostForm = () => {
                 rows="9"
                 id="message"
                 placeholder="내용을 입력해주세요.&nbsp;ex) 배나온 초밥집에서 연어초밥 시킬건데 같이 드실 분은 댓글 주세요!"
-                class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#42DDBB] "
+                class="w-full whitespace-pre-line resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#42DDBB] "
               ></textarea>
             </div>
             <div className="h-16 w-40 float-right">

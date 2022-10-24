@@ -18,25 +18,48 @@ export default function Hero() {
           <div className=" text-2xl pt-20 pb-8 text-white body-font">
             당신의 배달비를 저희가 아껴드릴게요!
           </div>
-          <div className="pl-4">
-            <a
-              href="./map"
-              className="pl-10 text-xl inline-flex border-2 border-white rounded-full text-white border-1 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#42DDBB] rounded text-lg"
-            >
-              배달비 아끼러가기
-              <svg
-                class="w-5 ml-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
+          <div className="flex">
+            <div className="pl-4">
+              <a
+                href="./categorypost"
+                className="pl-10 text-xl inline-flex border-2 border-white rounded-full text-white border-1 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#42DDBB] rounded text-lg"
               >
-                <path
-                  fill-rule="evenodd"
-                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </a>
+                메뉴 선택하기
+                <svg
+                  class="w-5 ml-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+
+            <div className="pl-4">
+              <a
+                href="./locationpost"
+                className="pl-10 text-xl inline-flex border-2 border-white rounded-full text-white border-1 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#42DDBB] rounded text-lg"
+              >
+                1km 반경 내 이웃들 글 보기
+                <svg
+                  class="w-5 ml-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>

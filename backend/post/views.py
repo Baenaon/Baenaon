@@ -118,7 +118,7 @@ class NearTheUserPosts(generics.ListAPIView):
             result = []
             for address in addresses:
                 if user_lat - 1/LATMOD <= address.lat <= user_lat + 1/LATMOD and \
-                        user_long - 1/LONGMOD <= user_long <= user_long + 1/LONGMOD :
+                        user_long - 1/LONGMOD <= address.long <= user_long + 1/LONGMOD :
                     for post in Post.objects.filter(address_id=address.id):
                         result.append({
                             'id': post.id,

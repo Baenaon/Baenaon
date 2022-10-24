@@ -61,7 +61,20 @@ const PostForm = () => {
       data: formData,
     });
     e.preventDefault();
-    Router.push(`/posts?category=${category}`);
+    if (!title || !content || !category){
+    	swal(
+           "양식이 틀렸습니다.",
+           "카테고리, 제목, 내용은 필수 항목입니다.",
+           "warning"
+           ).then((value) => {
+         if (value){
+              return Router.push('/postForm')
+         }
+      });
+    }
+    else{
+    	Router.push(`/posts?category=${category}`);
+    }
   });
 
   return (

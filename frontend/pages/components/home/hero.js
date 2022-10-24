@@ -42,7 +42,7 @@ export default function Hero() {
 
             <div className="pl-4">
               <a
-                href="./locationpost"
+                href="./usernearpost"
                 className="pl-10 text-xl inline-flex border-2 border-white rounded-full text-white border-1 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#42DDBB] rounded text-lg"
               >
                 1km 반경 내 이웃들 글 보기

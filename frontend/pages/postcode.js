@@ -23,10 +23,11 @@ const Postcode = ({ address_static, get_data }) => {
 
   const postCodeStyle = {
     display: "block",
-    position: "relative",
+    position: "absolute",
     top: "20%",
-    width: "400px",
-    height: "400px",
+    left: "100%",
+    width: "420px",
+    height: "600px",
     padding: "7px",
     zIndex: 100,
   };

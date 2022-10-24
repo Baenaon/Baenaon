@@ -10,8 +10,7 @@ from .models import Post, Comment
 from django.http import JsonResponse
 
 from .permissions import IsOwnerOrReadOnly
-
-
+from haversine import haversine
 
 class PostCreate(generics.CreateAPIView):
     queryset = Post.objects.all()
@@ -82,13 +81,44 @@ class UserPostsList(generics.ListAPIView):
             return Post.objects.none()
 
 class CategorySearchListView(generics.ListAPIView):
-    serializer_class = PostListSerializer
-    queryset = Post.objects.all()
+    # serializer_class = PostListSerializer
+    # queryset = Post.objects.all()
     permission_classes = [AllowAny]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     # SearchFilter
     search_fields = ['category']
-    ordering = ['-updated_at']
+    ordering_fields = ['-updated_at']
+
+    def get(self, request):
+        if self.request.user.is_authenticated:
+            user = self.request.user
+            address = Address.objects.get(addressname=user.address)
+            user_lat = address.lat
+            user_long = address.long
+            result = [{
+                'id': post.id,
+                'writer': post.user.nickname,
+                'title': post.title,
+                'category': post.category,
+                'content': post.content,
+                'created_at': post.created_at,
+                'updated_at': post.updated_at,
+                'distance': str(int(haversine((user_lat, user_long), (post.address.lat, post.address.long), unit='km'))) + 'km'
+
+            } for post in Post.objects.filter(category=request.GET.get('search'))]
+        else:
+            result = [{
+                'id': post.id,
+                'writer': post.user.nickname,
+                'title': post.title,
+                'category': post.category,
+                'content': post.content,
+                'created_at': post.created_at,
+                'updated_at': post.updated_at,
+                'distance': '',
+            } for post in Post.objects.filter(category=request.GET.get('search'))]
+
+        return JsonResponse({'result': result}, status=status.HTTP_200_OK)
 
 class UserCommentsList(generics.ListAPIView):
     serializer_class = CommentSerializer
@@ -119,6 +149,9 @@ class NearTheUserPosts(generics.ListAPIView):
             for address in addresses:
                 if user_lat - 1/LATMOD <= address.lat <= user_lat + 1/LATMOD and \
                         user_long - 1/LONGMOD <= address.long <= user_long + 1/LONGMOD :
+                    user_pos = (user_lat, user_long)
+                    user_opp = (address.lat, address.long)
+                    dis = str(int(haversine(user_pos, user_opp, unit = 'm'))) + "m"
                     for post in Post.objects.filter(address_id=address.id):
                         result.append({
                             'id': post.id,
@@ -128,6 +161,7 @@ class NearTheUserPosts(generics.ListAPIView):
                             'content': post.content,
                             'created_at': post.created_at,
                             'updated_at': post.updated_at,
+                            'distance': dis,
 
                             })
             result.sort(reverse=True, key=lambda x: x["updated_at"])

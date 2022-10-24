@@ -8,7 +8,7 @@ import useInput from "../hooks/useInput";
 import { useRouter } from "next/router";
 import Router from "next/router";
 import { useHistory } from "react-router-dom";
-
+import swal from "sweetalert";
 const PostForm = () => {
   const { addPostDone, addPostLoading } = useSelector((state) => state.post);
   // const { addPostDone, addPostLoading } = useSelector((state) => state.user);
@@ -37,6 +37,17 @@ const PostForm = () => {
 
   useEffect(() => {
     set_access_token(window.localStorage.getItem("access_token"));
+    if (!access_token){
+      swal(
+        "권한이 없습니다.",
+        "로그인/회원가입을 해주시길 바랍니다.",
+        "warning"
+      ).then((value) => {
+        if (value){
+          return Router.push("/loginform");
+        }
+      }); 
+    }
     setaddress3(window.localStorage.getItem("address"));
   }, [access_token]);
 

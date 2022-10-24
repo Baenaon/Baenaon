@@ -164,7 +164,10 @@ class NearTheUserPosts(generics.ListAPIView):
                             'distance': dis,
 
                             })
-            result.sort(reverse=True, key=lambda x: x["updated_at"])
-            return JsonResponse({'result': result}, status=status.HTTP_200_OK)
+            if not len(result):
+                return JsonResponse({'result':"NoPost"}, status=status.HTTP_200_OK)
+            else:
+                result.sort(reverse=True, key=lambda x: x["updated_at"])
+                return JsonResponse({'result': result}, status=status.HTTP_200_OK)
         except KeyError:
             return JsonResponse({'err_msg': 'KEY_ERROR'}, stauts=status.HTTP_400_BAD_REQUEST)

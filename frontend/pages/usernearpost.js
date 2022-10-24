@@ -9,7 +9,8 @@ import { END } from "redux-saga";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { backUrl } from "../config/config";
-
+import Router from "next/router";
+import swal from "sweetalert";
 const UserNearPost = ({}) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -36,14 +37,26 @@ const UserNearPost = ({}) => {
         })
         .then(function (response) {
           setPost(response.data.result);
-          if (mainPosts.length > 0){
+	  console.log("nopost오냐",mainPosts);
+	  if (mainPosts == "NoPost"){
+		swal(
+        	"No Post !",
+        	"게시글이 없습니다. 새로 글을 작성해 주세요.",
+        	"warning"
+     		).then((value) => {
+			if (value){
+	  			return Router.push('/categorypost')
+			}
+		});
+	  }
+	  else if (mainPosts.length > 0){
 	    console.log(mainPosts);
             setFlag(true);
           }
         });
     }
   }, [mainPosts]);
-
+  if (flag == true){
   return (
     <div>
       {" "}
@@ -87,5 +100,6 @@ const UserNearPost = ({}) => {
       )}
     </div>
   );
+}
 };
 export default UserNearPost;

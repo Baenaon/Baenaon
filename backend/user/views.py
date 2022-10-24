@@ -130,7 +130,8 @@ def kakao_callback(request):
                 'id': user.id,
                 'email': email,
                 'refresh_token': refresh_token,
-                'access_token': access_token
+                'access_token': access_token,
+                'address': user.address,
             }
             return JsonResponse(results, status = status.HTTP_200_OK)
     except get_user_model().DoesNotExist:
@@ -152,7 +153,8 @@ def kakao_callback(request):
             'id': user.id,
             'email': email,
             'refresh_token': refresh_token,
-            'access_token': access_token
+            'access_token': access_token,
+            'address': "",
         }
         return JsonResponse(results, status=status.HTTP_201_CREATED)
     else:

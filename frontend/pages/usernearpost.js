@@ -37,6 +37,7 @@ const UserNearPost = ({}) => {
         .then(function (response) {
           setPost(response.data.result);
           if (mainPosts.length > 0){
+	    console.log(mainPosts);
             setFlag(true);
           }
         });

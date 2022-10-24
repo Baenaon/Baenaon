@@ -33,7 +33,7 @@ const Posts = ({}) => {
     });
   }, [category, mainPosts]);
 
-  console.log("mainPosts", mainPosts.length);
+  console.log("mainPosts", mainPosts);
   return (
     <div>
       <Header />

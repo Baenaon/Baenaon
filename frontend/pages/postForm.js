@@ -27,6 +27,7 @@ const PostForm = () => {
   // const address = "상왕십리 무학로 33 텐즈힐아파트";
 
   const map1 = new Map();
+  var menu = "";
   map1.set("a", "한식");
   map1.set("b", "중식");
   map1.set("c", "일식");
@@ -40,7 +41,8 @@ const PostForm = () => {
   }, [access_token]);
 
   const setMenu = useCallback((e) => {
-    set_Menu(e.target.value);
+    menu = e.target.value;
+    set_Menu(menu);
   });
 
   const onSubmit = useCallback((e) => {
@@ -58,11 +60,9 @@ const PostForm = () => {
       type: ADD_POST_REQUEST,
       data: formData,
     });
-    console.log(formData);
     e.preventDefault();
-    Router.push("/");
+    Router.push(`/posts?category=${category}`);
   });
-  console.log(category);
 
   return (
     <div>
@@ -190,3 +190,4 @@ const PostForm = () => {
 };
 
 export default PostForm;
+

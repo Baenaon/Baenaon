@@ -1,5 +1,6 @@
 import axios from "axios";
 import { all, fork, put, takeLatest, throttle, call } from "redux-saga/effects";
+import Router from "next/router";
 
 import {
   ADD_POST_FAILURE,
@@ -48,9 +49,8 @@ function refreshToken() {
 
 function* addPost(action) {
   try {
-    console.log("통신전확인", action.data)
+    console.log("통신전확인", action.data);
     const result = yield call(addPostAPI, action.data);
-    console.log("통신 이후 데이터", action.data)
 
     yield put({
       type: ADD_POST_SUCCESS,
@@ -59,6 +59,9 @@ function* addPost(action) {
     window.localStorage.setItem("post_success", "true");
   } catch (err) {
     console.error(err);
+    if (err.response.status == 500) {
+      Router.push("/loginform");
+    }
     if (err.response.status == 403) {
       try {
         const result1 = yield call(refreshToken);

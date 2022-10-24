@@ -19,9 +19,16 @@ const OAuth2RedirectHandler = (props) => {
         const refresh_token = res.data.refresh_token;
         const access_token = res.data.access_token;
         console.log(res.data);
+	const address = res.data.address;
         window.localStorage.setItem("access_token", access_token);
         window.localStorage.setItem("refresh_token", refresh_token);
-        Router.push("/");
+	window.localStorage.setItem("address", address); 
+     	if (res.data.address == ''){
+          Router.push("/kakaoaddress")
+        }
+      	else{
+          Router.push("/");
+        }
       });
     console.log(code);
   };

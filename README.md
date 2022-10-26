@@ -166,46 +166,58 @@
 ### ***process*** 🚀
 >
 > - **사용자 회원가입**
-> 
-> ![image](https://user-images.githubusercontent.com/95459089/190398676-09967fdf-7c9c-42d2-8462-eb24469d7fb9.png)
+>
+> ![image](https://user-images.githubusercontent.com/95459089/197981580-3212263c-4c2f-44d4-b730-bf1aa759bce6.png)
+
 > 
 > - 사용자 로그인
 >
-> ![image](https://user-images.githubusercontent.com/95459089/190398915-fb3c0fd9-1866-4507-b8f6-cad0e7172902.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197981994-233ceb20-48dd-464e-b3c8-7b07b081d3bc.png)
+
 >
 > - 사용자 주변 희망하는 배달 픽업 장소 선택
 >
-> ![image](https://user-images.githubusercontent.com/95459089/190399063-2d3f2c94-b6c1-4f59-8bdf-8fac5cb71483.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197982438-54029646-2f36-497d-9829-0d864882693a.png)
+
 >
-> ![image](https://user-images.githubusercontent.com/95459089/190399219-ee6ce604-6c89-40c8-88ec-5ba6fbaabde6.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197982705-cc0981ca-ae7d-4500-90ba-522e97b39227.png)
+
 >
-> - 희망하는 배달 픽업 장소에 달린 게시글 보기
+> - 메뉴 선택하기
 >
-> ![image](https://user-images.githubusercontent.com/95459089/190399343-8daadcc3-6b64-49cd-9ebf-1d4149721f12.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197982900-1cf471f9-16d6-4e88-a830-4201c138522e.png)
 >
-> ![image](https://user-images.githubusercontent.com/95459089/190399433-a0daad9b-f5e2-4dc9-a48d-04038f1dc482.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197985722-20e2e1ed-6c8e-491b-b50c-6bed6616ba82.png)
 >
 > - 공동 배달을 희망하는 게시글에 댓글 달기
 >
-> ![image](https://user-images.githubusercontent.com/95459089/190403943-091981e4-f2a2-4812-bbf0-30b0f7fa2001.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197987465-65e443fc-7ba7-4f3e-9ce0-c38b95ff7024.png)
 > 
-> ![image](https://user-images.githubusercontent.com/95459089/190404057-8986a642-67d5-408b-b146-072bebcda5fb.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197987657-722f6574-56ea-4ea9-8d98-9ca85738dce9.png)
 >
 > - 게시글 만들기
 >
-> ![image](https://user-images.githubusercontent.com/95459089/190404415-690fbeb2-ea1d-443a-b9c7-9a4d9f347c86.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197988067-1be30a92-13bf-4ee7-9f01-44c45343d6d1.png)
 > 
-> ![image](https://user-images.githubusercontent.com/95459089/190404522-ce9171fb-98c8-4244-8fa3-61af663267a9.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197988901-7e9f1265-cf94-474d-9b30-aaefce4dfbd0.png)
+>
+> - 1km 반경 내 이웃들 글 보기
+>
+> ![image](https://user-images.githubusercontent.com/95459089/197989090-481b8649-b2c4-4b26-bd62-123478d07af3.png)
+>
+> ![image](https://user-images.githubusercontent.com/95459089/197990843-944a62dd-1a0d-4b21-b5f5-df6a497a5f63.png)
+>
+> 
 >
 > - 마이페이지 
 >
-> ![image](https://user-images.githubusercontent.com/95459089/190406145-10696eb5-d58f-4091-8ba2-bc9243397a51.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197991038-482fd4ad-9774-4f49-b643-04ec21215186.png)
 >
 > - 내가 쓴 글/ 내가 쓴 댓글 확인
 >
-> ![image](https://user-images.githubusercontent.com/95459089/190406249-4ad4f7ed-eeba-46d2-a496-1a5e0cd455b3.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197992635-f9d7b560-34d4-407a-bcb4-992be0b1f075.png)
 >
-> ![image](https://user-images.githubusercontent.com/95459089/190406324-f31d4d9f-6aa5-44ae-9766-c6c57c8d6d5e.png)
+> ![image](https://user-images.githubusercontent.com/95459089/197992753-7ae0e6c9-d700-42f9-9d48-088e28055f1f.png)
 >
 >
 > - 로그

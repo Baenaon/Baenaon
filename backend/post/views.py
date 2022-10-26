@@ -164,7 +164,7 @@ class NearTheUserPosts(generics.ListAPIView):
                             'distance': dis,
 
                             })
-            if not len(result):
+            if len(result) == 0:
                 return JsonResponse({'result':"NoPost"}, status=status.HTTP_200_OK)
             else:
                 result.sort(reverse=True, key=lambda x: x["updated_at"])

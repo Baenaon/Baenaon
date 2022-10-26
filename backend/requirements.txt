@@ -25,3 +25,4 @@ typing_extensions==4.3.0
 urllib3==1.26.12
 zipp==3.8.1
 djangorestframework-simplejwt==5.2.0
+haversine==2.7.0

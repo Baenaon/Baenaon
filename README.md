@@ -10,7 +10,7 @@
 ### ***Summary*** 🔽
 > - Project 소개
 >   - 배나온 (배달비 나눔 온라인 커뮤니티)
->   - JWT 기반 회원가입, 로그인 기능 구현
+>   - JWT 기반 회원가입, 로그인 기능 구현, 
 >   - 지역 커뮤니티 활성화를 위한 지역 게시판 구현
 >   - 카카오 Map API를 이용하여 지역 게시판과 연동
 >  
@@ -48,7 +48,7 @@
 >   - tailwindcss 3.1
 
 > - DataBase
->   - Mysql 
+>   - sqllite3
 
 <br>
 
@@ -157,7 +157,7 @@
 
 ### ***ERD*** 🏳
 
-> ![image](https://user-images.githubusercontent.com/87630540/189979975-9192d16e-c126-474f-b389-3e92b5a249d3.png)
+> ![image](https://user-images.githubusercontent.com/87630540/197989067-1e856c9c-53fe-4fe2-8965-f5df13437971.png)
 
 <br>
 
@@ -335,6 +335,7 @@
 > npm i react-kakao-maps-sdk
 > npm i react-daum-postcode
 > npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+> npm install sweetalert
 > ```
 >
 > **2. package.json 파일 수정**

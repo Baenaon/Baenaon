@@ -46,18 +46,20 @@ const Content = ({}) => {
     useEffect(() => {});
   };
 
-  // const onRemove = (e) => {
-  //   dispatch({
-  //     type: REMOVE_POST_REQUEST,
-  //     data: { id: address_id, access_token: access_token },
-  //   });
-  // };
+  const onRemove = (e) => {
+    dispatch({
+      type: REMOVE_POST_REQUEST,
+      data: { id: address_id, access_token: access_token },
+    });
+  };
 
   useEffect(() => {
-    dispatch({
-      type: LOAD_POST_REQUEST,
-      data: id,
-    });
+    if (typeof id !== "undefined") {
+      dispatch({
+        type: LOAD_POST_REQUEST,
+        data: id,
+      });
+    }
   }, [id, singlePost]);
 
   return (
@@ -76,7 +78,6 @@ const Content = ({}) => {
                 {map1.get(singlePost.category)}
               </button>
               <div className=" text-[#555555] title-font font-light mb-1">
-                {/* 2020-10-17 22:48:00 */}
                 {singlePost.updated_at.split("T")[0]}{" "}
                 {singlePost.updated_at.split("T")[1].split(".")[0]}
               </div>
@@ -108,7 +109,7 @@ const Content = ({}) => {
           </div>
         </div>
       ) : (
-        <div>loading...</div>
+        <div>loading…</div>
       )}
     </div>
   );

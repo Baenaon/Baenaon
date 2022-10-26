@@ -93,18 +93,13 @@ const LoginForm = () => {
                 href="#"
                 className="transform text-center font-semibold text-gray-500 duration-300 hover:text-gray-300"
               >
-                비밀번호 찾기 &nbsp;
               </a>
-              <span className="font-medium text-gray-500 underline-offset-4 hover:text-gray-300">
-                {" "}
-                |{" "}
-              </span>
 
               <a
                 href="/signup"
                 className="font-medium text-gray-500 underline-offset-4 hover:text-gray-300"
               >
-                &nbsp; 회원가입
+                회원가입
               </a>
             </div>
           </section>

@@ -1,7 +1,8 @@
 import axios from "axios";
 import { all, fork, put, takeLatest, throttle, call } from "redux-saga/effects";
 import Router from "next/router";
-
+import { useLocation } from "react-router-dom";
+import swal from "sweetalert";
 import {
   ADD_POST_FAILURE,
   ADD_POST_REQUEST,
@@ -165,6 +166,9 @@ function* addComment(action) {
     });
     window.localStorage.setItem("comment_success", "true");
   } catch (err) {
+    console.log("에러로그", err.response.status);
+    window.localStorage.setItem("form", "false");
+    window.localStorage.setItem("comment_success", "true");
     if (err.response.status == 403) {
       try {
         const result1 = yield call(refreshToken);
@@ -187,6 +191,12 @@ function* addComment(action) {
           error: err.response.data,
         });
       }
+    }
+    else if(err.response.statue == 400){
+      window.localStorage.setItem("comment_success", "true");
+      window.localStorage.setItem("form", "false");
+      setTimeout(() => {
+    }, 1000);
     }
   }
 }

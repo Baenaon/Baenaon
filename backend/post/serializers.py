@@ -34,6 +34,7 @@ class PostDetailSerializer(serializers.ModelSerializer):
 
     def get_comments(self, obj):
         comments = [{
+                    'id':comment.id,
                     'user':User.objects.get(id=comment.user_id).nickname,
                     'content':comment.content,
                     'created_at':comment.created_at,

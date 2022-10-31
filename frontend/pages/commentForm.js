@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { ADD_COMMENT_REQUEST } from "../reducers/post";
 import useInput from "../hooks/useInput";
 import Router from "next/router";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 const CommentForm = ({ post_id }) => {
   const dispatch = useDispatch();
   const [access_token, set_access_token] = useState({});
@@ -32,28 +32,28 @@ const CommentForm = ({ post_id }) => {
     });
     setTimeout(() => {
       if (window.localStorage.getItem("comment_success") != "true") {
-	swal(
-        "권한이 없습니다.",
-        "로그인/회원가입을 해주시길 바랍니다.",
-        "warning"
+        swal(
+          "권한이 없습니다.",
+          "로그인/회원가입을 해주시길 바랍니다.",
+          "warning"
         ).then((value) => {
-		if(value){
-        		return Router.push("/loginform");
-		}
-	});
-      }
-      else if(window.localStorage.getItem("comment_success") == "true" && window.localStorage.getItem("form") == "false"){
-      	swal(
-        "양식이 틀렸습니다.",
-        "내용은 필수입니다.",
-        "warning"
-      ).then((value) => {
-         if (value){
+          if (value) {
+            return Router.push("/loginform");
+          }
+        });
+      } else if (
+        window.localStorage.getItem("comment_success") == "true" &&
+        window.localStorage.getItem("form") == "false"
+      ) {
+        swal("양식이 틀렸습니다.", "내용은 필수입니다.", "warning").then(
+          (value) => {
+            if (value) {
               const location = window.location.pathname;
-	      console.log("위치", location);
-              return Router.push(location)
-         }
-      });	
+              console.log("위치", location);
+              return Router.push(location);
+            }
+          }
+        );
       }
     }, 1000);
   }, [commentText, post_id]);

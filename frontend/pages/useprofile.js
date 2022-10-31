@@ -76,7 +76,7 @@ const userprofile = () => {
                         href="/mypagecomment"
                         className="font-normal text-slate-700 hover:text-slate-400"
                       >
-                        내가 쓴 댓글
+                        내가 쓴 댓글의 게시글
                       </a>
                     </div>
                   </div>

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useCallback } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
@@ -8,11 +9,16 @@ import { LOAD_POSTS_REQUEST } from "../reducers/post";
 import { backUrl } from "../config/config";
 import Router from "next/router";
 import useInput from "../hooks/useInput";
+import { useRouter } from "next/router";
 
 const Comment = ({ comments }) => {
   const [access_token, set_access_token] = useState({});
   const [ifrewrite, set_ifrewrite] = useState(true);
   const [commentText, onChangeCommentText, setCommentText] = useInput("");
+
+  const router = useRouter();
+  const id = router.query.id;
+  console.log(id);
 
   useEffect(() => {
     setCommentText(comments.content);
@@ -34,12 +40,12 @@ const Comment = ({ comments }) => {
         },
       })
       .then(function (response) {
-        Router.push("/categorypost");
+        Router.push(`/content/${id}`);
       })
       .catch(function (error) {
         console.log(error.message);
         if (error.message) {
-          swal("댓글 삭제 실패", "권한이 없습니다.", "warning")
+          swal("댓글 삭제 실패", "권한이 없습니다.", "warning");
         }
       });
   });
@@ -56,12 +62,22 @@ const Comment = ({ comments }) => {
         }
       )
       .then(function (response) {
-        Router.push("/categorypost");
+        set_ifrewrite(!ifrewrite);
+        Router.push(`/content/${id}`);
       })
       .catch(function (error) {
         console.log(error.message);
-        if (error.message) {
-          swal("댓글 수정 실패", "권한이 없습니다.", "warning")     
+        if (error.response.status == 400) {
+          set_ifrewrite(!ifrewrite);
+          setCommentText(comments.content);
+          swal("댓글 수정 실패", "댓글을 작성해 주세요.", "warning").then(
+            Router.push(`/content/${id}`)
+          );
+        } else if (error.message) {
+          set_ifrewrite(!ifrewrite);
+          swal("댓글 수정 실패", "권한이 없습니다.", "warning").then(
+            Router.push(`/content/${id}`)
+          );
         }
       });
   });
@@ -71,17 +87,9 @@ const Comment = ({ comments }) => {
       <div className="flex flex-col w-full">
         <div className="flex justify-between w-full">
           <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
-            {comments.user}&nbsp;({comments.created_at.split("T")[0]}&nbsp;
-            {String(
-              parseInt(
-                comments.created_at.split("T")[1].split(".")[0].split(":")[0]
-              )
-            ) +
-              ":" +
-              comments.created_at.split("T")[1].split(".")[0].split(":")[1] +
-              ":" +
-              comments.created_at.split("T")[1].split(".")[0].split(":")[2]}
-            )
+            {comments.user}&nbsp;(
+            {comments.updated_at.split("T")[0]}{" "}
+            {comments.updated_at.split("T")[1].split(".")[0]})
           </h2>
           <div class="flex text-[#555555]">
             <div class="mr-3" onClick={onRemove_re}>
@@ -120,3 +128,4 @@ const Comment = ({ comments }) => {
 };
 
 export default Comment;
+

@@ -43,8 +43,7 @@ const Comment = ({ comments }) => {
         Router.push(`/content/${id}`);
       })
       .catch(function (error) {
-        console.log(error.message);
-        if (error.message) {
+        if (error.response.status == 403) {
           swal("댓글 삭제 실패", "권한이 없습니다.", "warning");
         }
       });

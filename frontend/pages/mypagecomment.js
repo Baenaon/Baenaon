@@ -1,14 +1,21 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import ReactDOM from "react-dom";
-import Link from "next/link";
 import axios from "axios";
 import Header from "../pages/components/header";
 import Comment from "../pages/comment";
 import { backUrl } from "../config/config";
+import Link from "next/link";
 
 const MyComment = () => {
   const [access_token, set_access_token] = useState({});
   const [user_posts, set_user_comments] = useState({});
+  const map1 = new Map();
+  map1.set("a", "한식");
+  map1.set("b", "중식");
+  map1.set("c", "일식");
+  map1.set("d", "치킨");
+  map1.set("e", "분식");
+  map1.set("f", "카페/디저트");
 
   useEffect(() => {
     set_access_token(window.localStorage.getItem("access_token"));
@@ -35,7 +42,7 @@ const MyComment = () => {
                 {Object.keys(user_posts).map((post) => (
                   <div className="h-160 w-73 p-8 m-3 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <div className="mb-3 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-2 text-base font-medium text-indigo-700  md:py-4 md:px-10 md:text-lg">
-                      {user_posts[post].category}
+                      {map1.get(user_posts[post].category)}
                     </div>
                     <div className=" ">
                       <h5 className="mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

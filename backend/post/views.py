@@ -103,7 +103,7 @@ class CategorySearchListView(generics.ListAPIView):
                 'content': post.content,
                 'created_at': post.created_at,
                 'updated_at': post.updated_at,
-                'distance': str(int(haversine((user_lat, user_long), (post.address.lat, post.address.long), unit='km'))) + 'km'
+                'distance': str(round(haversine((user_lat, user_long), (post.address.lat, post.address.long), unit='km'), 2)) + 'km'
 
             } for post in Post.objects.filter(category=request.GET.get('search'))]
         else:

@@ -25,7 +25,7 @@ from map.models import Address
 from .permissions import IsOwner
 
 from my_settings import KAKAO_REST_API_KEY, KAKAO_REDIRECT_URI
-
+from post.serializers import PostDetailSerializer
 
 
 class UserSignIn(generics.GenericAPIView):
@@ -72,12 +72,16 @@ class MypageList(generics.ListAPIView):
         return queryset
 
 class MypageComment(generics.ListAPIView):
-    serializer_class = MypageCommentsSerializer
+    serializer_class = PostDetailSerializer
     permission_classes = [IsOwner]
-    queryset = Comment.objects.all()
+    queryset = Post.objects.all()
+
     def get_queryset(self):
-        queryset = Comment.objects.filter(user_id=self.request.user.id)
-        return queryset
+        comments = Comment.objects.filter(user_id=self.request.user.id)
+        result = [
+            comment.post for comment in comments
+        ]
+        return result 
 
 class MypagePost(generics.ListAPIView):
     serializer_class = MypagePostsSerializer

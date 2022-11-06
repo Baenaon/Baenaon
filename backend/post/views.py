@@ -118,8 +118,17 @@ class CategorySearchListView(generics.ListAPIView):
                 'distance': '',
             } for post in Post.objects.filter(category=request.GET.get('search'))]
         result.sort(reverse=True, key=lambda x : x['updated_at'])
-        return JsonResponse({'result': result}, status=status.HTTP_200_OK)
-
+        result_2km = []
+        for i in range(len(result)):
+            if result[i]['distance'] == '':
+                return JsonResponse({'result': result}, status=status.HTTP_200_OK)
+            else:
+                dist = result[i]['distance']
+                dist = float(dist[ : len(dist) - 2])
+                if dist <= 2:   
+                    result_2km.append(result[i])
+                
+        return JsonResponse({'result': result_2km}, status=status.HTTP_200_OK)
 class UserCommentsList(generics.ListAPIView):
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]

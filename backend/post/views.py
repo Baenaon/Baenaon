@@ -162,17 +162,18 @@ class NearTheUserPosts(generics.ListAPIView):
                     user_opp = (address.lat, address.long)
                     dis = str(int(haversine(user_pos, user_opp, unit = 'm'))) + "m"
                     for post in Post.objects.filter(address_id=address.id):
-                        result.append({
-                            'id': post.id,
-                            'writer': post.user.nickname,
-                            'title': post.title,
-                            'category': post.category,
-                            'content': post.content,
-                            'created_at': post.created_at,
-                            'updated_at': post.updated_at,
-                            'distance': dis,
+                        if int(dis[:len(dis)-1]) < 1000:
+                            result.append({
+                                'id': post.id,
+                                'writer': post.user.nickname,
+                                'title': post.title,
+                                'category': post.category,
+                                'content': post.content,
+                                'created_at': post.created_at,
+                                'updated_at': post.updated_at,
+                                'distance': dis,
 
-                            })
+                                })
             if len(result) == 0:
                 return JsonResponse({'result':"NoPost"}, status=status.HTTP_200_OK)
             else:

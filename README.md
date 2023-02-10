@@ -92,6 +92,7 @@
 >   | postForm       | /pages/            | 게시글 쓰기 컴포넌트 |
 >   | posts       | /pages/            | 사용자와 가까운 게시글 목록 |
 >   | categorypost       | /pages/            | 카테고리별  |
+
 >   
 > 4️⃣  마이페이지 관련 Components
 >
